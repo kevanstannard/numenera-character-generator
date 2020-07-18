@@ -1,5 +1,26 @@
 'use strict';
 
+var Belt_List = require("bs-platform/lib/js/belt_List.js");
+
+var fightingMoves = {
+  hd: /* Aggression */0,
+  tl: {
+    hd: /* FleetOfFoot */1,
+    tl: {
+      hd: /* ImpressiveDisplay */2,
+      tl: {
+        hd: /* Misdirect */3,
+        tl: {
+          hd: /* NoNeedForWeapons */4,
+          tl: {
+            hd: /* TrainedWithoutArmour */5,
+            tl: /* [] */0
+          }
+        }
+      }
+    }
+  }
+};
 
 function getFightingMoveInfo(fightingMove) {
   switch (fightingMove) {
@@ -43,26 +64,9 @@ function getFightingMoveInfo(fightingMove) {
   }
 }
 
-var fightingMoves = {
-  hd: /* Aggression */0,
-  tl: {
-    hd: /* FleetOfFoot */1,
-    tl: {
-      hd: /* ImpressiveDisplay */2,
-      tl: {
-        hd: /* Misdirect */3,
-        tl: {
-          hd: /* NoNeedForWeapons */4,
-          tl: {
-            hd: /* TrainedWithoutArmour */5,
-            tl: /* [] */0
-          }
-        }
-      }
-    }
-  }
-};
+var fightingMoveInfos = Belt_List.map(fightingMoves, getFightingMoveInfo);
 
 exports.fightingMoves = fightingMoves;
 exports.getFightingMoveInfo = getFightingMoveInfo;
-/* No side effect */
+exports.fightingMoveInfos = fightingMoveInfos;
+/* fightingMoveInfos Not a pure module */

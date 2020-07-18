@@ -51,3 +51,5 @@ let getFightingMoveInfo = (fightingMove): fightingMoveInfo => {
     }
   };
 };
+
+let fightingMoveInfos = fightingMoves->Belt.List.map(getFightingMoveInfo);
