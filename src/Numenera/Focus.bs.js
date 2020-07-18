@@ -90,163 +90,163 @@ function getFocusInfo(focusType) {
     case /* BearsAHaloOfFire */0 :
         return {
                 focusType: /* BearsAHaloOfFire */0,
-                id: "bears_a_halo_of_fire",
+                id: "BearsAHaloOfFire",
                 name: "Bears a Halo of Fire"
               };
     case /* CommandsMentalPowers */1 :
         return {
                 focusType: /* CommandsMentalPowers */1,
-                id: "commands_mental_powers",
+                id: "CommandsMentalPowers",
                 name: "Commands Mental powers"
               };
     case /* ControlsBeasts */2 :
         return {
                 focusType: /* ControlsBeasts */2,
-                id: "controls_beasts",
+                id: "ControlsBeasts",
                 name: "Controls Beasts"
               };
     case /* ControlsGravity */3 :
         return {
                 focusType: /* ControlsGravity */3,
-                id: "controls_gravity",
+                id: "ControlsGravity",
                 name: "Controls Gravity"
               };
     case /* CraftsIllusions */4 :
         return {
                 focusType: /* CraftsIllusions */4,
-                id: "crafts_illusions",
+                id: "CraftsIllusions",
                 name: "Crafts Illusions"
               };
     case /* EmploysMagnetism */5 :
         return {
                 focusType: /* EmploysMagnetism */5,
-                id: "employs_magnetism",
+                id: "EmploysMagnetism",
                 name: "Employs Magnetism"
               };
     case /* Entertains */6 :
         return {
                 focusType: /* Entertains */6,
-                id: "entertains",
+                id: "Entertains",
                 name: "Entertains"
               };
     case /* ExistsPartiallyOutOfPhase */7 :
         return {
                 focusType: /* ExistsPartiallyOutOfPhase */7,
-                id: "exists_partially_out_of_phase",
+                id: "ExistsPartiallyOutOfPhase",
                 name: "Exists Partially Out of Phase"
               };
     case /* ExploresDarkPlaces */8 :
         return {
                 focusType: /* ExploresDarkPlaces */8,
-                id: "exlores_dark_places",
+                id: "ExploresDarkPlaces",
                 name: "Explores Dark Places"
               };
     case /* FightsWithPanache */9 :
         return {
                 focusType: /* FightsWithPanache */9,
-                id: "fights_with_panache",
+                id: "FightsWithPanache",
                 name: "Fights with Panache"
               };
     case /* FocusesMindOverMatter */10 :
         return {
                 focusType: /* FocusesMindOverMatter */10,
-                id: "focuses_mind_over_matter",
+                id: "FocusesMindOverMatter",
                 name: "Focuses Mind Over Matter"
               };
     case /* FusesFleshAndSteel */11 :
         return {
                 focusType: /* FusesFleshAndSteel */11,
-                id: "fuses_flesh_and_steel",
+                id: "FusesFleshAndSteel",
                 name: "Fuses Flesh and Steel"
               };
     case /* HowlsAtTheMoon */12 :
         return {
                 focusType: /* HowlsAtTheMoon */12,
-                id: "howls_at_the_moon",
+                id: "HowlsAtTheMoon",
                 name: "Howls at the Moon"
               };
     case /* Hunts */13 :
         return {
                 focusType: /* Hunts */13,
-                id: "hunts",
+                id: "Hunts",
                 name: "Hunts"
               };
     case /* LivesInTheWilderness */14 :
         return {
                 focusType: /* LivesInTheWilderness */14,
-                id: "lives_in_the_wilderness",
+                id: "LivesInTheWilderness",
                 name: "Lives in the Wilderness"
               };
     case /* MastersDefense */15 :
         return {
                 focusType: /* MastersDefense */15,
-                id: "masters_defense",
+                id: "MastersDefense",
                 name: "Masters Defense"
               };
     case /* MastersWeaponry */16 :
         return {
                 focusType: /* MastersWeaponry */16,
-                id: "masters_weaponry",
+                id: "MastersWeaponry",
                 name: "Masters Weaponry"
               };
     case /* Murders */17 :
         return {
                 focusType: /* Murders */17,
-                id: "murders",
+                id: "Murders",
                 name: "Muders"
               };
     case /* Rages */18 :
         return {
                 focusType: /* Rages */18,
-                id: "rages",
+                id: "Rages",
                 name: "Rages"
               };
     case /* RidesTheLightening */19 :
         return {
                 focusType: /* RidesTheLightening */19,
-                id: "rides_the_lightening",
+                id: "RidesTheLightening",
                 name: "Rides the Lightening"
               };
     case /* SpeaksWithASilverTongue */20 :
         return {
                 focusType: /* SpeaksWithASilverTongue */20,
-                id: "speaks_with_a_silver_tongue",
+                id: "SpeaksWithASilverTongue",
                 name: "Speaks with a Silver Tongue"
               };
     case /* TalksToMachines */21 :
         return {
                 focusType: /* TalksToMachines */21,
-                id: "talks_to_machines",
+                id: "TalksToMachines",
                 name: "Talks to Machines"
               };
     case /* WearsASheenOfIce */22 :
         return {
                 focusType: /* WearsASheenOfIce */22,
-                id: "wears_a_sheen_of_ice",
+                id: "WearsASheenOfIce",
                 name: "Wears a Sheen of Ice"
               };
     case /* WieldsPowerWithPrecision */23 :
         return {
                 focusType: /* WieldsPowerWithPrecision */23,
-                id: "wields_power_with_precision",
+                id: "WieldsPowerWithPrecision",
                 name: "Wields Power with Precision"
               };
     case /* WieldsTwoWeaponsAtOnce */24 :
         return {
                 focusType: /* WieldsTwoWeaponsAtOnce */24,
-                id: "wields_two_weapons_at_once",
+                id: "WieldsTwoWeaponsAtOnce",
                 name: "Wields Two Weapons at Once"
               };
     case /* WorksTheBackAlleys */25 :
         return {
                 focusType: /* WorksTheBackAlleys */25,
-                id: "works_the_back_alleys",
+                id: "WorksTheBackAlleys",
                 name: "Works the Back Alleys"
               };
     case /* WorksMiracles */26 :
         return {
                 focusType: /* WorksMiracles */26,
-                id: "works_miracles",
+                id: "WorksMiracles",
                 name: "Works Miracles"
               };
     

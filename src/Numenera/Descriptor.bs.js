@@ -5,7 +5,7 @@ var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var descriptorTypes = {
   hd: /* Charming */0,
   tl: {
-    hd: /* Celver */1,
+    hd: /* Clever */1,
     tl: {
       hd: /* Graceful */2,
       tl: {
@@ -45,73 +45,73 @@ function getDescriptorInfo(descriptorType) {
     case /* Charming */0 :
         return {
                 descriptorType: /* Charming */0,
-                id: "charming",
+                id: "Charming",
                 name: "Charming"
               };
-    case /* Celver */1 :
+    case /* Clever */1 :
         return {
-                descriptorType: /* Celver */1,
-                id: "clever",
+                descriptorType: /* Clever */1,
+                id: "Clever",
                 name: "Clever"
               };
     case /* Graceful */2 :
         return {
                 descriptorType: /* Graceful */2,
-                id: "graceful",
+                id: "Graceful",
                 name: "Graceful"
               };
     case /* Intelligent */3 :
         return {
                 descriptorType: /* Intelligent */3,
-                id: "intelligent",
+                id: "Intelligent",
                 name: "Intelligent"
               };
     case /* Learned */4 :
         return {
                 descriptorType: /* Learned */4,
-                id: "learned",
+                id: "Learned",
                 name: "Learned"
               };
     case /* MysticalMechanical */5 :
         return {
                 descriptorType: /* MysticalMechanical */5,
-                id: "mystical_mechanical",
+                id: "MysticalMechanical",
                 name: "Mystical/Mechanical"
               };
     case /* Rugged */6 :
         return {
                 descriptorType: /* Rugged */6,
-                id: "rugged",
+                id: "Rugged",
                 name: "Rugged"
               };
     case /* Stealthy */7 :
         return {
                 descriptorType: /* Stealthy */7,
-                id: "stealthy",
+                id: "Stealthy",
                 name: "Stealthy"
               };
     case /* Strong */8 :
         return {
                 descriptorType: /* Strong */8,
-                id: "strong",
+                id: "Strong",
                 name: "Strong"
               };
     case /* StrongWilled */9 :
         return {
                 descriptorType: /* StrongWilled */9,
-                id: "strong_willed",
+                id: "StrongWilled",
                 name: "Strong Willed"
               };
     case /* Swift */10 :
         return {
                 descriptorType: /* Swift */10,
-                id: "swift",
+                id: "Swift",
                 name: "Swift"
               };
     case /* Tough */11 :
         return {
                 descriptorType: /* Tough */11,
-                id: "tough",
+                id: "Tough",
                 name: "Tough"
               };
     

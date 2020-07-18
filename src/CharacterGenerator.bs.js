@@ -188,7 +188,15 @@ function CharacterGenerator(Props) {
                           tl: acc
                         };
                 }))));
-  return React.createElement("div", undefined, React.createElement("h1", undefined, "Numenera Character Generator"), formSectionEls);
+  return React.createElement("div", {
+              className: "container"
+            }, React.createElement("h1", undefined, "Numenera Character Generator"), React.createElement("div", {
+                  className: "row"
+                }, React.createElement("div", {
+                      className: "col-sm-6"
+                    }, formSectionEls), React.createElement("div", {
+                      className: "col-sm-6"
+                    }, "Output goes here")));
 }
 
 var make = CharacterGenerator;

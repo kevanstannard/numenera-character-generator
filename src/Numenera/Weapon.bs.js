@@ -127,91 +127,91 @@ function getWeaponInfo(weaponType) {
         return {
                 weaponType: /* Blowgun */0,
                 weaponSize: /* LightWeapon */0,
-                id: "blowgun",
+                id: "Blowgun",
                 name: "Blowgun"
               };
     case /* Buzzer */1 :
         return {
                 weaponType: /* Buzzer */1,
                 weaponSize: /* LightWeapon */0,
-                id: "buzzer",
+                id: "Buzzer",
                 name: "Buzzer"
               };
     case /* Club */2 :
         return {
                 weaponType: /* Club */2,
                 weaponSize: /* LightWeapon */0,
-                id: "club",
+                id: "Club",
                 name: "Club"
               };
     case /* Dagger */3 :
         return {
                 weaponType: /* Dagger */3,
                 weaponSize: /* LightWeapon */0,
-                id: "dagger",
+                id: "Dagger",
                 name: "Dagger"
               };
     case /* DartThrower */4 :
         return {
                 weaponType: /* DartThrower */4,
                 weaponSize: /* LightWeapon */0,
-                id: "dart_thrower",
+                id: "DartThrower",
                 name: "Dart thrower"
               };
     case /* ForearmBlade */5 :
         return {
                 weaponType: /* ForearmBlade */5,
                 weaponSize: /* LightWeapon */0,
-                id: "forearm_blade",
+                id: "ForearmBlade",
                 name: "Forearm blade"
               };
     case /* Knife */6 :
         return {
                 weaponType: /* Knife */6,
                 weaponSize: /* LightWeapon */0,
-                id: "knife",
+                id: "Knife",
                 name: "Knife"
               };
     case /* PunchingDagger */7 :
         return {
                 weaponType: /* PunchingDagger */7,
                 weaponSize: /* LightWeapon */0,
-                id: "punching_dagger",
+                id: "PunchingDagger",
                 name: "Punching dagger"
               };
     case /* Rapier */8 :
         return {
                 weaponType: /* Rapier */8,
                 weaponSize: /* LightWeapon */0,
-                id: "rapier",
+                id: "Rapier",
                 name: "Rapier"
               };
     case /* RazorRing */9 :
         return {
                 weaponType: /* RazorRing */9,
                 weaponSize: /* LightWeapon */0,
-                id: "razor_ring",
+                id: "RazorRing",
                 name: "Razor ring"
               };
     case /* Sisk */10 :
         return {
                 weaponType: /* Sisk */10,
                 weaponSize: /* LightWeapon */0,
-                id: "sisk",
+                id: "Sisk",
                 name: "Sisk"
               };
     case /* Whip */11 :
         return {
                 weaponType: /* Whip */11,
                 weaponSize: /* LightWeapon */0,
-                id: "whip",
+                id: "Whip",
                 name: "Whip"
               };
     case /* Battleaxe */12 :
         return {
                 weaponType: /* Battleaxe */12,
                 weaponSize: /* MediumWeapon */1,
-                id: "battleaxe",
+                id: "Battleaxe",
                 name: "Battleaxe"
               };
     case /* Bow */13 :
@@ -225,119 +225,119 @@ function getWeaponInfo(weaponType) {
         return {
                 weaponType: /* Broadsword */14,
                 weaponSize: /* MediumWeapon */1,
-                id: "broadsword",
+                id: "Broadsword",
                 name: "Broadsword"
               };
     case /* CrankCrossbow */15 :
         return {
                 weaponType: /* CrankCrossbow */15,
                 weaponSize: /* MediumWeapon */1,
-                id: "crank_crossbow",
+                id: "CrankCrossbow",
                 name: "Crank crossbow"
               };
     case /* Crossbow */16 :
         return {
                 weaponType: /* Crossbow */16,
                 weaponSize: /* MediumWeapon */1,
-                id: "crossbow",
+                id: "Crossbow",
                 name: "Crossbow"
               };
     case /* Flail */17 :
         return {
                 weaponType: /* Flail */17,
                 weaponSize: /* MediumWeapon */1,
-                id: "flail",
+                id: "Flail",
                 name: "Flail"
               };
     case /* Hammer */18 :
         return {
                 weaponType: /* Hammer */18,
                 weaponSize: /* MediumWeapon */1,
-                id: "hammer",
+                id: "Hammer",
                 name: "Hammer"
               };
     case /* Javelin */19 :
         return {
                 weaponType: /* Javelin */19,
                 weaponSize: /* MediumWeapon */1,
-                id: "javelin",
+                id: "Javelin",
                 name: "Javelin"
               };
     case /* Mace */20 :
         return {
                 weaponType: /* Mace */20,
                 weaponSize: /* MediumWeapon */1,
-                id: "mace",
+                id: "Mace",
                 name: "Mace"
               };
     case /* Polearm */21 :
         return {
                 weaponType: /* Polearm */21,
                 weaponSize: /* MediumWeapon */1,
-                id: "polearm",
+                id: "Polearm",
                 name: "Polearm"
               };
     case /* Quarterstaff */22 :
         return {
                 weaponType: /* Quarterstaff */22,
                 weaponSize: /* MediumWeapon */1,
-                id: "quarterstaff",
+                id: "Quarterstaff",
                 name: "Quarterstaff"
               };
     case /* Spear */23 :
         return {
                 weaponType: /* Spear */23,
                 weaponSize: /* MediumWeapon */1,
-                id: "spear",
+                id: "Spear",
                 name: "Spear"
               };
     case /* Verred */24 :
         return {
                 weaponType: /* Verred */24,
                 weaponSize: /* MediumWeapon */1,
-                id: "verred",
+                id: "Verred",
                 name: "Verred"
               };
     case /* Yulk */25 :
         return {
                 weaponType: /* Yulk */25,
                 weaponSize: /* MediumWeapon */1,
-                id: "yulk",
+                id: "Yulk",
                 name: "Yulk"
               };
     case /* Greataxe */26 :
         return {
                 weaponType: /* Greataxe */26,
                 weaponSize: /* HeavyWeapon */2,
-                id: "greataxe",
+                id: "Greataxe",
                 name: "Greataxe"
               };
     case /* Greatsword */27 :
         return {
                 weaponType: /* Greatsword */27,
                 weaponSize: /* HeavyWeapon */2,
-                id: "greatsword",
+                id: "Greatsword",
                 name: "Greatsword"
               };
     case /* HeavyCrossbow */28 :
         return {
                 weaponType: /* HeavyCrossbow */28,
                 weaponSize: /* HeavyWeapon */2,
-                id: "heavy_crossbow",
+                id: "HeavyCrossbow",
                 name: "Heavy crossbow"
               };
     case /* Maul */29 :
         return {
                 weaponType: /* Maul */29,
                 weaponSize: /* HeavyWeapon */2,
-                id: "maul",
+                id: "Maul",
                 name: "Maul"
               };
     case /* SwordStaff */30 :
         return {
                 weaponType: /* SwordStaff */30,
                 weaponSize: /* HeavyWeapon */2,
-                id: "sword_staff",
+                id: "SwordStaff",
                 name: "Sword-staff"
               };
     

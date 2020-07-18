@@ -1,6 +1,7 @@
 open Character;
 open Descriptor;
 open Focus;
+open Weapon;
 
 type attribute =
   | CharacterType(characterType);
@@ -9,14 +10,14 @@ type state = {
   characterType: option(characterType),
   characterDescriptor: option(descriptorType),
   characterFocus: option(focusType),
-  weapons: list(Weapon.weaponType),
+  weapons: list(weaponType),
 };
 
 type actions =
   | SetCharacterType(option(characterType))
   | SetCharacterDescriptor(option(descriptorType))
   | SetCharacterFocus(option(focusType))
-  | SetWeapons(list(Weapon.weaponType));
+  | SetWeapons(list(weaponType));
 
 type formSection =
   | CollectCharacterType
@@ -150,8 +151,11 @@ let make = () => {
     ->Belt.List.toArray
     ->React.array;
 
-  <div>
+  <div className="container">
     <h1> {React.string("Numenera Character Generator")} </h1>
-    formSectionEls
+    <div className="row">
+      <div className="col-sm-6"> formSectionEls </div>
+      <div className="col-sm-6"> {React.string("Output goes here")} </div>
+    </div>
   </div>;
 };

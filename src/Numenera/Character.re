@@ -32,7 +32,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
   switch (characterType) {
   | Glave => {
       characterType: Glave,
-      id: "glave",
+      id: "Glave",
       name: "Glave",
       baseEffort: 1,
       baseStat: {
@@ -50,7 +50,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
     }
   | Nano => {
       characterType: Nano,
-      id: "nano",
+      id: "Nano",
       name: "Nano",
       baseEffort: 1,
       baseStat: {
@@ -68,7 +68,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
     }
   | Jack => {
       characterType: Jack,
-      id: "jack",
+      id: "Jack",
       name: "Jack",
       baseEffort: 1,
       baseStat: {

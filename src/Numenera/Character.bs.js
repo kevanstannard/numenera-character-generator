@@ -18,7 +18,7 @@ function getCharacterInfo(characterType) {
     case /* Glave */0 :
         return {
                 characterType: /* Glave */0,
-                id: "glave",
+                id: "Glave",
                 name: "Glave",
                 baseEffort: 1,
                 baseStat: {
@@ -46,7 +46,7 @@ function getCharacterInfo(characterType) {
     case /* Nano */1 :
         return {
                 characterType: /* Nano */1,
-                id: "nano",
+                id: "Nano",
                 name: "Nano",
                 baseEffort: 1,
                 baseStat: {
@@ -68,7 +68,7 @@ function getCharacterInfo(characterType) {
     case /* Jack */2 :
         return {
                 characterType: /* Jack */2,
-                id: "jack",
+                id: "Jack",
                 name: "Jack",
                 baseEffort: 1,
                 baseStat: {

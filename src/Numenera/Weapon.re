@@ -110,91 +110,91 @@ let getWeaponInfo = (weaponType: weaponType) => {
   | Blowgun => {
       weaponType: Blowgun,
       weaponSize: LightWeapon,
-      id: "blowgun",
+      id: "Blowgun",
       name: "Blowgun",
     }
 
   | Buzzer => {
       weaponType: Buzzer,
       weaponSize: LightWeapon,
-      id: "buzzer",
+      id: "Buzzer",
       name: "Buzzer",
     }
 
   | Club => {
       weaponType: Club,
       weaponSize: LightWeapon,
-      id: "club",
+      id: "Club",
       name: "Club",
     }
 
   | Dagger => {
       weaponType: Dagger,
       weaponSize: LightWeapon,
-      id: "dagger",
+      id: "Dagger",
       name: "Dagger",
     }
 
   | DartThrower => {
       weaponType: DartThrower,
       weaponSize: LightWeapon,
-      id: "dart_thrower",
+      id: "DartThrower",
       name: "Dart thrower",
     }
 
   | ForearmBlade => {
       weaponType: ForearmBlade,
       weaponSize: LightWeapon,
-      id: "forearm_blade",
+      id: "ForearmBlade",
       name: "Forearm blade",
     }
 
   | Knife => {
       weaponType: Knife,
       weaponSize: LightWeapon,
-      id: "knife",
+      id: "Knife",
       name: "Knife",
     }
 
   | PunchingDagger => {
       weaponType: PunchingDagger,
       weaponSize: LightWeapon,
-      id: "punching_dagger",
+      id: "PunchingDagger",
       name: "Punching dagger",
     }
 
   | Rapier => {
       weaponType: Rapier,
       weaponSize: LightWeapon,
-      id: "rapier",
+      id: "Rapier",
       name: "Rapier",
     }
 
   | RazorRing => {
       weaponType: RazorRing,
       weaponSize: LightWeapon,
-      id: "razor_ring",
+      id: "RazorRing",
       name: "Razor ring",
     }
 
   | Sisk => {
       weaponType: Sisk,
       weaponSize: LightWeapon,
-      id: "sisk",
+      id: "Sisk",
       name: "Sisk",
     }
 
   | Whip => {
       weaponType: Whip,
       weaponSize: LightWeapon,
-      id: "whip",
+      id: "Whip",
       name: "Whip",
     }
 
   | Battleaxe => {
       weaponType: Battleaxe,
       weaponSize: MediumWeapon,
-      id: "battleaxe",
+      id: "Battleaxe",
       name: "Battleaxe",
     }
 
@@ -203,119 +203,119 @@ let getWeaponInfo = (weaponType: weaponType) => {
   | Broadsword => {
       weaponType: Broadsword,
       weaponSize: MediumWeapon,
-      id: "broadsword",
+      id: "Broadsword",
       name: "Broadsword",
     }
 
   | CrankCrossbow => {
       weaponType: CrankCrossbow,
       weaponSize: MediumWeapon,
-      id: "crank_crossbow",
+      id: "CrankCrossbow",
       name: "Crank crossbow",
     }
 
   | Crossbow => {
       weaponType: Crossbow,
       weaponSize: MediumWeapon,
-      id: "crossbow",
+      id: "Crossbow",
       name: "Crossbow",
     }
 
   | Flail => {
       weaponType: Flail,
       weaponSize: MediumWeapon,
-      id: "flail",
+      id: "Flail",
       name: "Flail",
     }
 
   | Hammer => {
       weaponType: Hammer,
       weaponSize: MediumWeapon,
-      id: "hammer",
+      id: "Hammer",
       name: "Hammer",
     }
 
   | Javelin => {
       weaponType: Javelin,
       weaponSize: MediumWeapon,
-      id: "javelin",
+      id: "Javelin",
       name: "Javelin",
     }
 
   | Mace => {
       weaponType: Mace,
       weaponSize: MediumWeapon,
-      id: "mace",
+      id: "Mace",
       name: "Mace",
     }
 
   | Polearm => {
       weaponType: Polearm,
       weaponSize: MediumWeapon,
-      id: "polearm",
+      id: "Polearm",
       name: "Polearm",
     }
 
   | Quarterstaff => {
       weaponType: Quarterstaff,
       weaponSize: MediumWeapon,
-      id: "quarterstaff",
+      id: "Quarterstaff",
       name: "Quarterstaff",
     }
 
   | Spear => {
       weaponType: Spear,
       weaponSize: MediumWeapon,
-      id: "spear",
+      id: "Spear",
       name: "Spear",
     }
 
   | Verred => {
       weaponType: Verred,
       weaponSize: MediumWeapon,
-      id: "verred",
+      id: "Verred",
       name: "Verred",
     }
 
   | Yulk => {
       weaponType: Yulk,
       weaponSize: MediumWeapon,
-      id: "yulk",
+      id: "Yulk",
       name: "Yulk",
     }
 
   | Greataxe => {
       weaponType: Greataxe,
       weaponSize: HeavyWeapon,
-      id: "greataxe",
+      id: "Greataxe",
       name: "Greataxe",
     }
 
   | Greatsword => {
       weaponType: Greatsword,
       weaponSize: HeavyWeapon,
-      id: "greatsword",
+      id: "Greatsword",
       name: "Greatsword",
     }
 
   | HeavyCrossbow => {
       weaponType: HeavyCrossbow,
       weaponSize: HeavyWeapon,
-      id: "heavy_crossbow",
+      id: "HeavyCrossbow",
       name: "Heavy crossbow",
     }
 
   | Maul => {
       weaponType: Maul,
       weaponSize: HeavyWeapon,
-      id: "maul",
+      id: "Maul",
       name: "Maul",
     }
 
   | SwordStaff => {
       weaponType: SwordStaff,
       weaponSize: HeavyWeapon,
-      id: "sword_staff",
+      id: "SwordStaff",
       name: "Sword-staff",
     }
   };

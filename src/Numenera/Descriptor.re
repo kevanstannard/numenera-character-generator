@@ -1,6 +1,6 @@
 type descriptorType =
   | Charming
-  | Celver
+  | Clever
   | Graceful
   | Intelligent
   | Learned
@@ -20,7 +20,7 @@ type descriptorInfo = {
 
 let descriptorTypes: list(descriptorType) = [
   Charming,
-  Celver,
+  Clever,
   Graceful,
   Intelligent,
   Learned,
@@ -35,30 +35,30 @@ let descriptorTypes: list(descriptorType) = [
 
 let getDescriptorInfo = descriptorType => {
   switch (descriptorType) {
-  | Charming => {descriptorType: Charming, id: "charming", name: "Charming"}
-  | Celver => {descriptorType: Celver, id: "clever", name: "Clever"}
-  | Graceful => {descriptorType: Graceful, id: "graceful", name: "Graceful"}
+  | Charming => {descriptorType: Charming, id: "Charming", name: "Charming"}
+  | Clever => {descriptorType: Clever, id: "Clever", name: "Clever"}
+  | Graceful => {descriptorType: Graceful, id: "Graceful", name: "Graceful"}
   | Intelligent => {
       descriptorType: Intelligent,
-      id: "intelligent",
+      id: "Intelligent",
       name: "Intelligent",
     }
-  | Learned => {descriptorType: Learned, id: "learned", name: "Learned"}
+  | Learned => {descriptorType: Learned, id: "Learned", name: "Learned"}
   | MysticalMechanical => {
       descriptorType: MysticalMechanical,
-      id: "mystical_mechanical",
+      id: "MysticalMechanical",
       name: "Mystical/Mechanical",
     }
-  | Rugged => {descriptorType: Rugged, id: "rugged", name: "Rugged"}
-  | Stealthy => {descriptorType: Stealthy, id: "stealthy", name: "Stealthy"}
-  | Strong => {descriptorType: Strong, id: "strong", name: "Strong"}
+  | Rugged => {descriptorType: Rugged, id: "Rugged", name: "Rugged"}
+  | Stealthy => {descriptorType: Stealthy, id: "Stealthy", name: "Stealthy"}
+  | Strong => {descriptorType: Strong, id: "Strong", name: "Strong"}
   | StrongWilled => {
       descriptorType: StrongWilled,
-      id: "strong_willed",
+      id: "StrongWilled",
       name: "Strong Willed",
     }
-  | Swift => {descriptorType: Swift, id: "swift", name: "Swift"}
-  | Tough => {descriptorType: Tough, id: "tough", name: "Tough"}
+  | Swift => {descriptorType: Swift, id: "Swift", name: "Swift"}
+  | Tough => {descriptorType: Tough, id: "Tough", name: "Tough"}
   };
 };
 

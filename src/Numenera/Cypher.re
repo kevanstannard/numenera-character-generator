@@ -1,0 +1,2 @@
+type cypher =
+  | Cypher(string);

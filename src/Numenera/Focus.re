@@ -67,125 +67,125 @@ let getFocusInfo = (focusType: focusType): focusInfo => {
   switch (focusType) {
   | BearsAHaloOfFire => {
       focusType: BearsAHaloOfFire,
-      id: "bears_a_halo_of_fire",
+      id: "BearsAHaloOfFire",
       name: "Bears a Halo of Fire",
     }
   | CommandsMentalPowers => {
       focusType: CommandsMentalPowers,
-      id: "commands_mental_powers",
+      id: "CommandsMentalPowers",
       name: "Commands Mental powers",
     }
   | ControlsBeasts => {
       focusType: ControlsBeasts,
-      id: "controls_beasts",
+      id: "ControlsBeasts",
       name: "Controls Beasts",
     }
   | ControlsGravity => {
       focusType: ControlsGravity,
-      id: "controls_gravity",
+      id: "ControlsGravity",
       name: "Controls Gravity",
     }
   | CraftsIllusions => {
       focusType: CraftsIllusions,
-      id: "crafts_illusions",
+      id: "CraftsIllusions",
       name: "Crafts Illusions",
     }
   | EmploysMagnetism => {
       focusType: EmploysMagnetism,
-      id: "employs_magnetism",
+      id: "EmploysMagnetism",
       name: "Employs Magnetism",
     }
   | Entertains => {
       focusType: Entertains,
-      id: "entertains",
+      id: "Entertains",
       name: "Entertains",
     }
   | ExistsPartiallyOutOfPhase => {
       focusType: ExistsPartiallyOutOfPhase,
-      id: "exists_partially_out_of_phase",
+      id: "ExistsPartiallyOutOfPhase",
       name: "Exists Partially Out of Phase",
     }
   | ExploresDarkPlaces => {
       focusType: ExploresDarkPlaces,
-      id: "exlores_dark_places",
+      id: "ExploresDarkPlaces",
       name: "Explores Dark Places",
     }
   | FightsWithPanache => {
       focusType: FightsWithPanache,
-      id: "fights_with_panache",
+      id: "FightsWithPanache",
       name: "Fights with Panache",
     }
   | FocusesMindOverMatter => {
       focusType: FocusesMindOverMatter,
-      id: "focuses_mind_over_matter",
+      id: "FocusesMindOverMatter",
       name: "Focuses Mind Over Matter",
     }
   | FusesFleshAndSteel => {
       focusType: FusesFleshAndSteel,
-      id: "fuses_flesh_and_steel",
+      id: "FusesFleshAndSteel",
       name: "Fuses Flesh and Steel",
     }
   | HowlsAtTheMoon => {
       focusType: HowlsAtTheMoon,
-      id: "howls_at_the_moon",
+      id: "HowlsAtTheMoon",
       name: "Howls at the Moon",
     }
-  | Hunts => {focusType: Hunts, id: "hunts", name: "Hunts"}
+  | Hunts => {focusType: Hunts, id: "Hunts", name: "Hunts"}
   | LivesInTheWilderness => {
       focusType: LivesInTheWilderness,
-      id: "lives_in_the_wilderness",
+      id: "LivesInTheWilderness",
       name: "Lives in the Wilderness",
     }
   | MastersDefense => {
       focusType: MastersDefense,
-      id: "masters_defense",
+      id: "MastersDefense",
       name: "Masters Defense",
     }
   | MastersWeaponry => {
       focusType: MastersWeaponry,
-      id: "masters_weaponry",
+      id: "MastersWeaponry",
       name: "Masters Weaponry",
     }
-  | Murders => {focusType: Murders, id: "murders", name: "Muders"}
-  | Rages => {focusType: Rages, id: "rages", name: "Rages"}
+  | Murders => {focusType: Murders, id: "Murders", name: "Muders"}
+  | Rages => {focusType: Rages, id: "Rages", name: "Rages"}
   | RidesTheLightening => {
       focusType: RidesTheLightening,
-      id: "rides_the_lightening",
+      id: "RidesTheLightening",
       name: "Rides the Lightening",
     }
   | SpeaksWithASilverTongue => {
       focusType: SpeaksWithASilverTongue,
-      id: "speaks_with_a_silver_tongue",
+      id: "SpeaksWithASilverTongue",
       name: "Speaks with a Silver Tongue",
     }
   | TalksToMachines => {
       focusType: TalksToMachines,
-      id: "talks_to_machines",
+      id: "TalksToMachines",
       name: "Talks to Machines",
     }
   | WearsASheenOfIce => {
       focusType: WearsASheenOfIce,
-      id: "wears_a_sheen_of_ice",
+      id: "WearsASheenOfIce",
       name: "Wears a Sheen of Ice",
     }
   | WieldsPowerWithPrecision => {
       focusType: WieldsPowerWithPrecision,
-      id: "wields_power_with_precision",
+      id: "WieldsPowerWithPrecision",
       name: "Wields Power with Precision",
     }
   | WieldsTwoWeaponsAtOnce => {
       focusType: WieldsTwoWeaponsAtOnce,
-      id: "wields_two_weapons_at_once",
+      id: "WieldsTwoWeaponsAtOnce",
       name: "Wields Two Weapons at Once",
     }
   | WorksTheBackAlleys => {
       focusType: WorksTheBackAlleys,
-      id: "works_the_back_alleys",
+      id: "WorksTheBackAlleys",
       name: "Works the Back Alleys",
     }
   | WorksMiracles => {
       focusType: WorksMiracles,
-      id: "works_miracles",
+      id: "WorksMiracles",
       name: "Works Miracles",
     }
   };
