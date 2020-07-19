@@ -5,6 +5,7 @@ var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 var Character$NumeneraCharacterGenerator = require("../Numenera/Character.bs.js");
+var TricksSelector$NumeneraCharacterGenerator = require("./TricksSelector.bs.js");
 var WeaponsSelector$NumeneraCharacterGenerator = require("./WeaponsSelector.bs.js");
 var EsoteriesSelector$NumeneraCharacterGenerator = require("./EsoteriesSelector.bs.js");
 var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./CharacterEdgeSelector.bs.js");
@@ -27,7 +28,10 @@ var formSections = {
             hd: /* CollectWeapons */5,
             tl: {
               hd: /* CollectEsoteries */6,
-              tl: /* [] */0
+              tl: {
+                hd: /* CollectTricks */7,
+                tl: /* [] */0
+              }
             }
           }
         }
@@ -58,6 +62,15 @@ function hasEsoteries(state) {
   return characterInfo.esoteriesCount > 0;
 }
 
+function hasTricks(state) {
+  var characterType = state.characterType;
+  if (characterType === undefined) {
+    return false;
+  }
+  var characterInfo = Character$NumeneraCharacterGenerator.getCharacterInfo(characterType);
+  return characterInfo.tricksCount > 0;
+}
+
 function formSectionIsVisible(state, formSection) {
   switch (formSection) {
     case /* CollectCharacterType */0 :
@@ -71,6 +84,8 @@ function formSectionIsVisible(state, formSection) {
         return Belt_Option.isSome(state.characterType);
     case /* CollectEsoteries */6 :
         return hasEsoteries(state);
+    case /* CollectTricks */7 :
+        return hasTricks(state);
     
   }
 }
@@ -81,7 +96,8 @@ function defaultState(param) {
           characterDescriptor: undefined,
           characterFocus: undefined,
           weapons: /* [] */0,
-          esoteries: /* [] */0
+          esoteries: /* [] */0,
+          tricks: /* [] */0
         };
 }
 
@@ -94,7 +110,8 @@ function CharacterGenerator(Props) {
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: state.characterFocus,
                         weapons: state.weapons,
-                        esoteries: state.esoteries
+                        esoteries: state.esoteries,
+                        tricks: state.tricks
                       };
             case /* SetCharacterDescriptor */1 :
                 return {
@@ -102,7 +119,8 @@ function CharacterGenerator(Props) {
                         characterDescriptor: action._0,
                         characterFocus: state.characterFocus,
                         weapons: state.weapons,
-                        esoteries: state.esoteries
+                        esoteries: state.esoteries,
+                        tricks: state.tricks
                       };
             case /* SetCharacterFocus */2 :
                 return {
@@ -110,7 +128,8 @@ function CharacterGenerator(Props) {
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: action._0,
                         weapons: state.weapons,
-                        esoteries: state.esoteries
+                        esoteries: state.esoteries,
+                        tricks: state.tricks
                       };
             case /* SetWeapons */3 :
                 return {
@@ -118,7 +137,8 @@ function CharacterGenerator(Props) {
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: state.characterFocus,
                         weapons: action._0,
-                        esoteries: state.esoteries
+                        esoteries: state.esoteries,
+                        tricks: state.tricks
                       };
             case /* SetEsoteries */4 :
                 return {
@@ -126,7 +146,17 @@ function CharacterGenerator(Props) {
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: state.characterFocus,
                         weapons: state.weapons,
-                        esoteries: action._0
+                        esoteries: action._0,
+                        tricks: state.tricks
+                      };
+            case /* SetTricks */5 :
+                return {
+                        characterType: state.characterType,
+                        characterDescriptor: state.characterDescriptor,
+                        characterFocus: state.characterFocus,
+                        weapons: state.weapons,
+                        esoteries: state.esoteries,
+                        tricks: action._0
                       };
             
           }
@@ -135,7 +165,8 @@ function CharacterGenerator(Props) {
         characterDescriptor: undefined,
         characterFocus: undefined,
         weapons: /* [] */0,
-        esoteries: /* [] */0
+        esoteries: /* [] */0,
+        tricks: /* [] */0
       });
   var dispatch = match[1];
   var state = match[0];
@@ -227,6 +258,20 @@ function CharacterGenerator(Props) {
                                 key: "EsoteriesSelector"
                               }) : null;
                         break;
+                    case /* CollectTricks */7 :
+                        var characterType$2 = state.characterType;
+                        var characterInfo$2 = characterType$2 !== undefined ? Character$NumeneraCharacterGenerator.getCharacterInfo(characterType$2) : undefined;
+                        el = characterInfo$2 !== undefined ? React.createElement(TricksSelector$NumeneraCharacterGenerator.make, {
+                                trickCount: characterInfo$2.tricksCount,
+                                onSelect: (function (tricks) {
+                                    return Curry._1(dispatch, {
+                                                TAG: /* SetTricks */5,
+                                                _0: tricks
+                                              });
+                                  }),
+                                key: "TricksSelector"
+                              }) : null;
+                        break;
                     
                   }
                   return {
@@ -251,6 +296,7 @@ exports.formSections = formSections;
 exports.isCharacterTypeSelected = isCharacterTypeSelected;
 exports.isCharacterType = isCharacterType;
 exports.hasEsoteries = hasEsoteries;
+exports.hasTricks = hasTricks;
 exports.formSectionIsVisible = formSectionIsVisible;
 exports.defaultState = defaultState;
 exports.make = make;

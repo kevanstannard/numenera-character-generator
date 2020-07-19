@@ -3,6 +3,7 @@ open Descriptor;
 open Focus;
 open Weapon;
 open Esotery;
+open Trick;
 
 type attribute =
   | CharacterType(characterType);
@@ -13,6 +14,7 @@ type state = {
   characterFocus: option(focusType),
   weapons: list(weaponType),
   esoteries: list(esotery),
+  tricks: list(trick),
 };
 
 type actions =
@@ -20,7 +22,8 @@ type actions =
   | SetCharacterDescriptor(option(descriptorType))
   | SetCharacterFocus(option(focusType))
   | SetWeapons(list(weaponType))
-  | SetEsoteries(list(esotery));
+  | SetEsoteries(list(esotery))
+  | SetTricks(list(trick));
 
 type formSection =
   | CollectCharacterType
@@ -29,7 +32,8 @@ type formSection =
   | CollectCharacterStats
   | CollectCharacterEdge
   | CollectWeapons
-  | CollectEsoteries;
+  | CollectEsoteries
+  | CollectTricks;
 
 let formSections = [
   CollectCharacterType,
@@ -39,6 +43,7 @@ let formSections = [
   CollectCharacterEdge,
   CollectWeapons,
   CollectEsoteries,
+  CollectTricks,
 ];
 
 let isCharacterTypeSelected = state =>
@@ -60,6 +65,15 @@ let hasEsoteries = (state: state) => {
   };
 };
 
+let hasTricks = (state: state) => {
+  switch (state.characterType) {
+  | None => false
+  | Some(characterType) =>
+    let characterInfo = getCharacterInfo(characterType);
+    characterInfo.tricksCount > 0;
+  };
+};
+
 let formSectionIsVisible = (state: state, formSection: formSection) => {
   switch (formSection) {
   | CollectCharacterType => true
@@ -69,6 +83,7 @@ let formSectionIsVisible = (state: state, formSection: formSection) => {
   | CollectCharacterEdge => isCharacterType(state, Jack)
   | CollectWeapons => isCharacterTypeSelected(state)
   | CollectEsoteries => hasEsoteries(state)
+  | CollectTricks => hasTricks(state)
   };
 };
 
@@ -78,6 +93,7 @@ let defaultState = (): state => {
   characterFocus: None,
   weapons: [],
   esoteries: [],
+  tricks: [],
 };
 
 [@react.component]
@@ -94,6 +110,7 @@ let make = () => {
         | SetCharacterFocus(characterFocus) => {...state, characterFocus}
         | SetWeapons(weapons) => {...state, weapons}
         | SetEsoteries(esoteries) => {...state, esoteries}
+        | SetTricks(tricks) => {...state, tricks}
         },
       defaultState(),
     );
@@ -176,7 +193,24 @@ let make = () => {
                   onSelect={esoteries => {dispatch(SetEsoteries(esoteries))}}
                 />
               };
+            | CollectTricks =>
+              let characterInfo =
+                switch (state.characterType) {
+                | None => None
+                | Some(characterType) =>
+                  Some(getCharacterInfo(characterType))
+                };
+              switch (characterInfo) {
+              | None => React.null
+              | Some(characterInfo) =>
+                <TricksSelector
+                  key="TricksSelector"
+                  trickCount={characterInfo.tricksCount}
+                  onSelect={tricks => {dispatch(SetTricks(tricks))}}
+                />
+              };
             };
+
           [el, ...acc];
         },
       )

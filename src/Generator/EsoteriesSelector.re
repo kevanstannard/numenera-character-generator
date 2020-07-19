@@ -31,12 +31,12 @@ module EsoterySelector = {
 
 [@react.component]
 let make = (~esoteryCount: int, ~onSelect: list(esotery) => unit) => {
-  let (selectedWeapons, setSelectedWeapons) = React.useState(_ => []);
+  let (selected, setSelected) = React.useState(_ => []);
 
   let onEsoterySelect = (slot: int, esotery: option(esotery)): unit => {
-    let newSelectedWeapons = updateSlot(selectedWeapons, slot, esotery);
-    setSelectedWeapons(_ => newSelectedWeapons);
-    onSelect(toItems(newSelectedWeapons));
+    let newSelected = updateSlot(selected, slot, esotery);
+    setSelected(_ => newSelected);
+    onSelect(toItems(newSelected));
   };
 
   <div>

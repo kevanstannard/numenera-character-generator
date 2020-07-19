@@ -25,6 +25,7 @@ type characterInfo = {
   weaponSizes: list(Weapon.weaponSize),
   weaponCount: int,
   esoteriesCount: int,
+  tricksCount: int,
 };
 
 let characterTypes: list(characterType) = [Glave, Nano, Jack];
@@ -49,6 +50,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
       weaponSizes: [LightWeapon, MediumWeapon, HeavyWeapon],
       weaponCount: 2,
       esoteriesCount: 0,
+      tricksCount: 0,
     }
   | Nano => {
       characterType: Nano,
@@ -68,6 +70,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
       weaponSizes: [LightWeapon],
       weaponCount: 1,
       esoteriesCount: 2,
+      tricksCount: 0,
     }
   | Jack => {
       characterType: Jack,
@@ -87,6 +90,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
       weaponSizes: [LightWeapon, MediumWeapon],
       weaponCount: 2,
       esoteriesCount: 0,
+      tricksCount: 2,
     }
   };
 };

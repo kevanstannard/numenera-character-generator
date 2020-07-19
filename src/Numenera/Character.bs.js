@@ -42,7 +42,8 @@ function getCharacterInfo(characterType) {
                   }
                 },
                 weaponCount: 2,
-                esoteriesCount: 0
+                esoteriesCount: 0,
+                tricksCount: 0
               };
     case /* Nano */1 :
         return {
@@ -65,7 +66,8 @@ function getCharacterInfo(characterType) {
                   tl: /* [] */0
                 },
                 weaponCount: 1,
-                esoteriesCount: 2
+                esoteriesCount: 2,
+                tricksCount: 0
               };
     case /* Jack */2 :
         return {
@@ -91,7 +93,8 @@ function getCharacterInfo(characterType) {
                   }
                 },
                 weaponCount: 2,
-                esoteriesCount: 0
+                esoteriesCount: 0,
+                tricksCount: 2
               };
     
   }

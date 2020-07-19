@@ -3,42 +3,42 @@
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
-var Esotery$NumeneraCharacterGenerator = require("../Numenera/Esotery.bs.js");
+var Trick$NumeneraCharacterGenerator = require("../Numenera/Trick.bs.js");
 var SlotItem$NumeneraCharacterGenerator = require("../Util/SlotItem.bs.js");
 
-function EsoteriesSelector$EsoterySelector(Props) {
+function TricksSelector$TrickSelector(Props) {
   var label = Props.label;
   var onSelect = Props.onSelect;
   var onChange = function (e) {
     var value = e.target.value;
-    return Curry._1(onSelect, Esotery$NumeneraCharacterGenerator.stringToEsotery(value));
+    return Curry._1(onSelect, Trick$NumeneraCharacterGenerator.stringToTrick(value));
   };
   return React.createElement("p", undefined, React.createElement("label", undefined, label + ": ", React.createElement("select", {
                       onChange: onChange
-                    }, React.createElement("option", undefined, "Choose an esotery"), Belt_List.toArray(Belt_List.map(Esotery$NumeneraCharacterGenerator.esoteryInfos, (function (esoteryInfo) {
+                    }, React.createElement("option", undefined, "Choose a trick"), Belt_List.toArray(Belt_List.map(Trick$NumeneraCharacterGenerator.trickInfos, (function (trickInfo) {
                                 return React.createElement("option", {
-                                            key: esoteryInfo.id,
-                                            value: esoteryInfo.id
-                                          }, esoteryInfo.name);
+                                            key: trickInfo.id,
+                                            value: trickInfo.id
+                                          }, trickInfo.name);
                               }))))));
 }
 
-var EsoterySelector = {
-  make: EsoteriesSelector$EsoterySelector
+var TrickSelector = {
+  make: TricksSelector$TrickSelector
 };
 
-function EsoteriesSelector(Props) {
-  var esoteryCount = Props.esoteryCount;
+function TricksSelector(Props) {
+  var trickCount = Props.trickCount;
   var onSelect = Props.onSelect;
   var match = React.useState(function () {
         return /* [] */0;
       });
   var setSelected = match[1];
   var selected = match[0];
-  return React.createElement("div", undefined, React.createElement("h2", undefined, "Esoteries"), Belt_List.toArray(Belt_List.map(SlotItem$NumeneraCharacterGenerator.makeSlots(esoteryCount), (function (slot) {
-                        var label = "Esotery #" + String(slot);
-                        var key = "esotery-" + String(slot);
-                        return React.createElement(EsoteriesSelector$EsoterySelector, {
+  return React.createElement("div", undefined, React.createElement("h2", undefined, "Tricks"), Belt_List.toArray(Belt_List.map(SlotItem$NumeneraCharacterGenerator.makeSlots(trickCount), (function (slot) {
+                        var label = "Trick #" + String(slot);
+                        var key = "trick-" + String(slot);
+                        return React.createElement(TricksSelector$TrickSelector, {
                                     label: label,
                                     onSelect: (function (param) {
                                         var newSelected = SlotItem$NumeneraCharacterGenerator.updateSlot(selected, slot, param);
@@ -52,8 +52,8 @@ function EsoteriesSelector(Props) {
                       }))));
 }
 
-var make = EsoteriesSelector;
+var make = TricksSelector;
 
-exports.EsoterySelector = EsoterySelector;
+exports.TrickSelector = TrickSelector;
 exports.make = make;
 /* react Not a pure module */
