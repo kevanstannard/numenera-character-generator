@@ -40,7 +40,7 @@ let make = (~trickCount: int, ~onSelect: list(trick) => unit) => {
   };
 
   <div>
-    <h2> {React.string("Tricks")} </h2>
+    <h2> {React.string("Tricks of the Trade")} </h2>
     {makeSlots(trickCount)
      ->Belt.List.map(slot => {
          let label = "Trick #" ++ string_of_int(slot);
