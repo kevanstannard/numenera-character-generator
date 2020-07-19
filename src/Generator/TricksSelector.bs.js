@@ -35,7 +35,7 @@ function TricksSelector(Props) {
       });
   var setSelected = match[1];
   var selected = match[0];
-  return React.createElement("div", undefined, React.createElement("h2", undefined, "Tricks"), Belt_List.toArray(Belt_List.map(SlotItem$NumeneraCharacterGenerator.makeSlots(trickCount), (function (slot) {
+  return React.createElement("div", undefined, React.createElement("h2", undefined, "Tricks of the Trade"), Belt_List.toArray(Belt_List.map(SlotItem$NumeneraCharacterGenerator.makeSlots(trickCount), (function (slot) {
                         var label = "Trick #" + String(slot);
                         var key = "trick-" + String(slot);
                         return React.createElement(TricksSelector$TrickSelector, {
