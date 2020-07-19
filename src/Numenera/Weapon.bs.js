@@ -7,19 +7,19 @@ function getWeaponSizeInfo(weaponSize) {
     case /* LightWeapon */0 :
         return {
                 weaponSize: /* LightWeapon */0,
-                id: "light_weapon",
+                id: "LightWeapon",
                 name: "Light"
               };
     case /* MediumWeapon */1 :
         return {
                 weaponSize: /* MediumWeapon */1,
-                id: "medium_weapon",
+                id: "MediumWeapon",
                 name: "Medium"
               };
     case /* HeavyWeapon */2 :
         return {
                 weaponSize: /* HeavyWeapon */2,
-                id: "heavy_weapon",
+                id: "HeavyWeapon",
                 name: "Heavy"
               };
     

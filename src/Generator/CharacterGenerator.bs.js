@@ -4,13 +4,13 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
-var Character$NumeneraCharacterGenerator = require("./Numenera/Character.bs.js");
-var WeaponSelector$NumeneraCharacterGenerator = require("./Generator/WeaponSelector.bs.js");
-var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./Generator/CharacterEdgeSelector.bs.js");
-var CharacterTypeSelector$NumeneraCharacterGenerator = require("./Generator/CharacterTypeSelector.bs.js");
-var CharacterFocusSelector$NumeneraCharacterGenerator = require("./Generator/CharacterFocusSelector.bs.js");
-var CharacterStatsSelector$NumeneraCharacterGenerator = require("./Generator/CharacterStatsSelector.bs.js");
-var CharacterDescriptorSelector$NumeneraCharacterGenerator = require("./Generator/CharacterDescriptorSelector.bs.js");
+var Character$NumeneraCharacterGenerator = require("../Numenera/Character.bs.js");
+var WeaponSelector$NumeneraCharacterGenerator = require("./WeaponSelector.bs.js");
+var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./CharacterEdgeSelector.bs.js");
+var CharacterTypeSelector$NumeneraCharacterGenerator = require("./CharacterTypeSelector.bs.js");
+var CharacterFocusSelector$NumeneraCharacterGenerator = require("./CharacterFocusSelector.bs.js");
+var CharacterStatsSelector$NumeneraCharacterGenerator = require("./CharacterStatsSelector.bs.js");
+var CharacterDescriptorSelector$NumeneraCharacterGenerator = require("./CharacterDescriptorSelector.bs.js");
 
 var formSections = {
   hd: /* CollectCharacterType */0,

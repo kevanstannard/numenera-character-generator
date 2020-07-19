@@ -46,21 +46,13 @@ let weaponSizes = [LightWeapon, MediumWeapon, HeavyWeapon];
 
 let getWeaponSizeInfo = (weaponSize: weaponSize) => {
   switch (weaponSize) {
-  | LightWeapon => {
-      weaponSize: LightWeapon,
-      id: "light_weapon",
-      name: "Light",
-    }
+  | LightWeapon => {weaponSize: LightWeapon, id: "LightWeapon", name: "Light"}
   | MediumWeapon => {
       weaponSize: MediumWeapon,
-      id: "medium_weapon",
+      id: "MediumWeapon",
       name: "Medium",
     }
-  | HeavyWeapon => {
-      weaponSize: HeavyWeapon,
-      id: "heavy_weapon",
-      name: "Heavy",
-    }
+  | HeavyWeapon => {weaponSize: HeavyWeapon, id: "HeavyWeapon", name: "Heavy"}
   };
 };
 
