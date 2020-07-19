@@ -6,7 +6,7 @@ var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Weapon$NumeneraCharacterGenerator = require("../Numenera/Weapon.bs.js");
 var SlotItem$NumeneraCharacterGenerator = require("../Util/SlotItem.bs.js");
 
-function WeaponSelector$SingleWeaponSelector(Props) {
+function WeaponsSelector$WeaponSelector(Props) {
   var label = Props.label;
   var availableWeapons = Props.availableWeapons;
   var onSelect = Props.onSelect;
@@ -24,11 +24,11 @@ function WeaponSelector$SingleWeaponSelector(Props) {
                               }))))));
 }
 
-var SingleWeaponSelector = {
-  make: WeaponSelector$SingleWeaponSelector
+var WeaponSelector = {
+  make: WeaponsSelector$WeaponSelector
 };
 
-function WeaponSelector(Props) {
+function WeaponsSelector(Props) {
   var weaponCount = Props.weaponCount;
   var weaponSizes = Props.weaponSizes;
   var onSelect = Props.onSelect;
@@ -49,7 +49,7 @@ function WeaponSelector(Props) {
   return React.createElement("div", undefined, React.createElement("h2", undefined, "Weapons"), React.createElement("p", undefined, "Weapon sizes: " + weaponSizeNames), Belt_List.toArray(Belt_List.map(SlotItem$NumeneraCharacterGenerator.makeSlots(weaponCount), (function (slot) {
                         var label = "Weapon #" + String(slot);
                         var key = "weapon-" + String(slot);
-                        return React.createElement(WeaponSelector$SingleWeaponSelector, {
+                        return React.createElement(WeaponsSelector$WeaponSelector, {
                                     label: label,
                                     availableWeapons: availableWeapons,
                                     onSelect: (function (param) {
@@ -64,8 +64,8 @@ function WeaponSelector(Props) {
                       }))));
 }
 
-var make = WeaponSelector;
+var make = WeaponsSelector;
 
-exports.SingleWeaponSelector = SingleWeaponSelector;
+exports.WeaponSelector = WeaponSelector;
 exports.make = make;
 /* react Not a pure module */

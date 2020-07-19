@@ -1,7 +1,7 @@
 open Weapon;
 open SlotItem;
 
-module SingleWeaponSelector = {
+module WeaponSelector = {
   [@react.component]
   let make =
       (
@@ -69,7 +69,7 @@ let make =
      ->Belt.List.map(slot => {
          let label = "Weapon #" ++ string_of_int(slot);
          let key = "weapon-" ++ string_of_int(slot);
-         <SingleWeaponSelector
+         <WeaponSelector
            key
            label
            availableWeapons

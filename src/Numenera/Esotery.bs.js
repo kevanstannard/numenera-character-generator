@@ -57,7 +57,20 @@ function getEsoteryInfo(esotery) {
 
 var esoteryInfos = Belt_List.map(esoteries, getEsoteryInfo);
 
+function stringToEsotery(id) {
+  return Belt_List.reduce(esoteryInfos, undefined, (function (acc, esoteryInfo) {
+                if (acc !== undefined) {
+                  return acc;
+                } else if (esoteryInfo.id === id) {
+                  return esoteryInfo.esotery;
+                } else {
+                  return acc;
+                }
+              }));
+}
+
 exports.esoteries = esoteries;
 exports.getEsoteryInfo = getEsoteryInfo;
 exports.esoteryInfos = esoteryInfos;
+exports.stringToEsotery = stringToEsotery;
 /* esoteryInfos Not a pure module */

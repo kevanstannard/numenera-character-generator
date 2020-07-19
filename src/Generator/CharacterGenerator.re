@@ -2,6 +2,7 @@ open Character;
 open Descriptor;
 open Focus;
 open Weapon;
+open Esotery;
 
 type attribute =
   | CharacterType(characterType);
@@ -11,13 +12,15 @@ type state = {
   characterDescriptor: option(descriptorType),
   characterFocus: option(focusType),
   weapons: list(weaponType),
+  esoteries: list(esotery),
 };
 
 type actions =
   | SetCharacterType(option(characterType))
   | SetCharacterDescriptor(option(descriptorType))
   | SetCharacterFocus(option(focusType))
-  | SetWeapons(list(weaponType));
+  | SetWeapons(list(weaponType))
+  | SetEsoteries(list(esotery));
 
 type formSection =
   | CollectCharacterType
@@ -25,7 +28,8 @@ type formSection =
   | CollectCharacterFocus
   | CollectCharacterStats
   | CollectCharacterEdge
-  | CollectWeapons;
+  | CollectWeapons
+  | CollectEsoteries;
 
 let formSections = [
   CollectCharacterType,
@@ -34,15 +38,25 @@ let formSections = [
   CollectCharacterStats,
   CollectCharacterEdge,
   CollectWeapons,
+  CollectEsoteries,
 ];
 
 let isCharacterTypeSelected = state =>
   Belt.Option.isSome(state.characterType);
 
-let isJack = state => {
+let isCharacterType = (state: state, characterType: characterType) => {
   switch (state.characterType) {
   | None => false
-  | Some(characterType) => characterType === Jack
+  | Some(currentCharacterType) => currentCharacterType === characterType
+  };
+};
+
+let hasEsoteries = (state: state) => {
+  switch (state.characterType) {
+  | None => false
+  | Some(characterType) =>
+    let characterInfo = getCharacterInfo(characterType);
+    characterInfo.esoteriesCount > 0;
   };
 };
 
@@ -52,8 +66,9 @@ let formSectionIsVisible = (state: state, formSection: formSection) => {
   | CollectCharacterDescriptor => true
   | CollectCharacterFocus => true
   | CollectCharacterStats => true
-  | CollectCharacterEdge => isJack(state)
+  | CollectCharacterEdge => isCharacterType(state, Jack)
   | CollectWeapons => isCharacterTypeSelected(state)
+  | CollectEsoteries => hasEsoteries(state)
   };
 };
 
@@ -62,6 +77,7 @@ let defaultState = (): state => {
   characterDescriptor: None,
   characterFocus: None,
   weapons: [],
+  esoteries: [],
 };
 
 [@react.component]
@@ -77,6 +93,7 @@ let make = () => {
           }
         | SetCharacterFocus(characterFocus) => {...state, characterFocus}
         | SetWeapons(weapons) => {...state, weapons}
+        | SetEsoteries(esoteries) => {...state, esoteries}
         },
       defaultState(),
     );
@@ -134,13 +151,29 @@ let make = () => {
               switch (characterInfo) {
               | None => React.null
               | Some(characterInfo) =>
-                <WeaponSelector
-                  key="WeaponSelector"
+                <WeaponsSelector
+                  key="WeaponsSelector"
                   weaponCount={characterInfo.weaponCount}
                   weaponSizes={characterInfo.weaponSizes}
                   onSelect={weaponTypes => {
                     dispatch(SetWeapons(weaponTypes))
                   }}
+                />
+              };
+            | CollectEsoteries =>
+              let characterInfo =
+                switch (state.characterType) {
+                | None => None
+                | Some(characterType) =>
+                  Some(getCharacterInfo(characterType))
+                };
+              switch (characterInfo) {
+              | None => React.null
+              | Some(characterInfo) =>
+                <EsoteriesSelector
+                  key="EsoteriesSelector"
+                  esoteryCount={characterInfo.esoteriesCount}
+                  onSelect={esoteries => {dispatch(SetEsoteries(esoteries))}}
                 />
               };
             };

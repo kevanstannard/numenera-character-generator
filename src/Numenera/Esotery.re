@@ -24,3 +24,12 @@ let getEsoteryInfo = (esotery): esoteryInfo => {
 };
 
 let esoteryInfos = esoteries->Belt.List.map(getEsoteryInfo);
+
+let stringToEsotery = (id: string): option(esotery) => {
+  Belt.List.reduce(esoteryInfos, None, (acc, esoteryInfo) => {
+    switch (acc) {
+    | Some(esotery) => Some(esotery)
+    | None => esoteryInfo.id === id ? Some(esoteryInfo.esotery) : acc
+    }
+  });
+};

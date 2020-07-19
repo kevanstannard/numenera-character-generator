@@ -5,7 +5,8 @@ var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 var Character$NumeneraCharacterGenerator = require("../Numenera/Character.bs.js");
-var WeaponSelector$NumeneraCharacterGenerator = require("./WeaponSelector.bs.js");
+var WeaponsSelector$NumeneraCharacterGenerator = require("./WeaponsSelector.bs.js");
+var EsoteriesSelector$NumeneraCharacterGenerator = require("./EsoteriesSelector.bs.js");
 var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./CharacterEdgeSelector.bs.js");
 var CharacterTypeSelector$NumeneraCharacterGenerator = require("./CharacterTypeSelector.bs.js");
 var CharacterFocusSelector$NumeneraCharacterGenerator = require("./CharacterFocusSelector.bs.js");
@@ -24,7 +25,10 @@ var formSections = {
           hd: /* CollectCharacterEdge */4,
           tl: {
             hd: /* CollectWeapons */5,
-            tl: /* [] */0
+            tl: {
+              hd: /* CollectEsoteries */6,
+              tl: /* [] */0
+            }
           }
         }
       }
@@ -36,24 +40,38 @@ function isCharacterTypeSelected(state) {
   return Belt_Option.isSome(state.characterType);
 }
 
-function isJack(state) {
-  var characterType = state.characterType;
-  if (characterType !== undefined) {
-    return characterType === /* Jack */2;
+function isCharacterType(state, characterType) {
+  var currentCharacterType = state.characterType;
+  if (currentCharacterType !== undefined) {
+    return currentCharacterType === characterType;
   } else {
     return false;
   }
 }
 
+function hasEsoteries(state) {
+  var characterType = state.characterType;
+  if (characterType === undefined) {
+    return false;
+  }
+  var characterInfo = Character$NumeneraCharacterGenerator.getCharacterInfo(characterType);
+  return characterInfo.esoteriesCount > 0;
+}
+
 function formSectionIsVisible(state, formSection) {
-  if (formSection !== 4) {
-    if (formSection >= 5) {
-      return Belt_Option.isSome(state.characterType);
-    } else {
-      return true;
-    }
-  } else {
-    return isJack(state);
+  switch (formSection) {
+    case /* CollectCharacterType */0 :
+    case /* CollectCharacterDescriptor */1 :
+    case /* CollectCharacterFocus */2 :
+    case /* CollectCharacterStats */3 :
+        return true;
+    case /* CollectCharacterEdge */4 :
+        return isCharacterType(state, /* Jack */2);
+    case /* CollectWeapons */5 :
+        return Belt_Option.isSome(state.characterType);
+    case /* CollectEsoteries */6 :
+        return hasEsoteries(state);
+    
   }
 }
 
@@ -62,7 +80,8 @@ function defaultState(param) {
           characterType: undefined,
           characterDescriptor: undefined,
           characterFocus: undefined,
-          weapons: /* [] */0
+          weapons: /* [] */0,
+          esoteries: /* [] */0
         };
 }
 
@@ -74,28 +93,40 @@ function CharacterGenerator(Props) {
                         characterType: action._0,
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: state.characterFocus,
-                        weapons: state.weapons
+                        weapons: state.weapons,
+                        esoteries: state.esoteries
                       };
             case /* SetCharacterDescriptor */1 :
                 return {
                         characterType: state.characterType,
                         characterDescriptor: action._0,
                         characterFocus: state.characterFocus,
-                        weapons: state.weapons
+                        weapons: state.weapons,
+                        esoteries: state.esoteries
                       };
             case /* SetCharacterFocus */2 :
                 return {
                         characterType: state.characterType,
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: action._0,
-                        weapons: state.weapons
+                        weapons: state.weapons,
+                        esoteries: state.esoteries
                       };
             case /* SetWeapons */3 :
                 return {
                         characterType: state.characterType,
                         characterDescriptor: state.characterDescriptor,
                         characterFocus: state.characterFocus,
-                        weapons: action._0
+                        weapons: action._0,
+                        esoteries: state.esoteries
+                      };
+            case /* SetEsoteries */4 :
+                return {
+                        characterType: state.characterType,
+                        characterDescriptor: state.characterDescriptor,
+                        characterFocus: state.characterFocus,
+                        weapons: state.weapons,
+                        esoteries: action._0
                       };
             
           }
@@ -103,7 +134,8 @@ function CharacterGenerator(Props) {
         characterType: undefined,
         characterDescriptor: undefined,
         characterFocus: undefined,
-        weapons: /* [] */0
+        weapons: /* [] */0,
+        esoteries: /* [] */0
       });
   var dispatch = match[1];
   var state = match[0];
@@ -169,7 +201,7 @@ function CharacterGenerator(Props) {
                     case /* CollectWeapons */5 :
                         var characterType = state.characterType;
                         var characterInfo = characterType !== undefined ? Character$NumeneraCharacterGenerator.getCharacterInfo(characterType) : undefined;
-                        el = characterInfo !== undefined ? React.createElement(WeaponSelector$NumeneraCharacterGenerator.make, {
+                        el = characterInfo !== undefined ? React.createElement(WeaponsSelector$NumeneraCharacterGenerator.make, {
                                 weaponCount: characterInfo.weaponCount,
                                 weaponSizes: characterInfo.weaponSizes,
                                 onSelect: (function (weaponTypes) {
@@ -178,7 +210,21 @@ function CharacterGenerator(Props) {
                                                 _0: weaponTypes
                                               });
                                   }),
-                                key: "WeaponSelector"
+                                key: "WeaponsSelector"
+                              }) : null;
+                        break;
+                    case /* CollectEsoteries */6 :
+                        var characterType$1 = state.characterType;
+                        var characterInfo$1 = characterType$1 !== undefined ? Character$NumeneraCharacterGenerator.getCharacterInfo(characterType$1) : undefined;
+                        el = characterInfo$1 !== undefined ? React.createElement(EsoteriesSelector$NumeneraCharacterGenerator.make, {
+                                esoteryCount: characterInfo$1.esoteriesCount,
+                                onSelect: (function (esoteries) {
+                                    return Curry._1(dispatch, {
+                                                TAG: /* SetEsoteries */4,
+                                                _0: esoteries
+                                              });
+                                  }),
+                                key: "EsoteriesSelector"
                               }) : null;
                         break;
                     
@@ -203,7 +249,8 @@ var make = CharacterGenerator;
 
 exports.formSections = formSections;
 exports.isCharacterTypeSelected = isCharacterTypeSelected;
-exports.isJack = isJack;
+exports.isCharacterType = isCharacterType;
+exports.hasEsoteries = hasEsoteries;
 exports.formSectionIsVisible = formSectionIsVisible;
 exports.defaultState = defaultState;
 exports.make = make;
