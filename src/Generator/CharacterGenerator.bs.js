@@ -12,6 +12,7 @@ var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./CharacterEdgeS
 var CharacterTypeSelector$NumeneraCharacterGenerator = require("./CharacterTypeSelector.bs.js");
 var CharacterFocusSelector$NumeneraCharacterGenerator = require("./CharacterFocusSelector.bs.js");
 var CharacterStatsSelector$NumeneraCharacterGenerator = require("./CharacterStatsSelector.bs.js");
+var CharacterGeneratorState$NumeneraCharacterGenerator = require("./CharacterGeneratorState.bs.js");
 var CharacterDescriptorSelector$NumeneraCharacterGenerator = require("./CharacterDescriptorSelector.bs.js");
 
 var formSections = {
@@ -90,17 +91,6 @@ function formSectionIsVisible(state, formSection) {
   }
 }
 
-function defaultState(param) {
-  return {
-          characterType: undefined,
-          characterDescriptor: undefined,
-          characterFocus: undefined,
-          weapons: /* [] */0,
-          esoteries: /* [] */0,
-          tricks: /* [] */0
-        };
-}
-
 function CharacterGenerator(Props) {
   var match = React.useReducer((function (state, action) {
           switch (action.TAG | 0) {
@@ -160,14 +150,7 @@ function CharacterGenerator(Props) {
                       };
             
           }
-        }), {
-        characterType: undefined,
-        characterDescriptor: undefined,
-        characterFocus: undefined,
-        weapons: /* [] */0,
-        esoteries: /* [] */0,
-        tricks: /* [] */0
-      });
+        }), CharacterGeneratorState$NumeneraCharacterGenerator.defaultState(undefined));
   var dispatch = match[1];
   var state = match[0];
   console.log(state);
@@ -298,6 +281,5 @@ exports.isCharacterType = isCharacterType;
 exports.hasEsoteries = hasEsoteries;
 exports.hasTricks = hasTricks;
 exports.formSectionIsVisible = formSectionIsVisible;
-exports.defaultState = defaultState;
 exports.make = make;
 /* react Not a pure module */

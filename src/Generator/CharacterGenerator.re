@@ -5,18 +5,6 @@ open Weapon;
 open Esotery;
 open Trick;
 
-type attribute =
-  | CharacterType(characterType);
-
-type state = {
-  characterType: option(characterType),
-  characterDescriptor: option(descriptorType),
-  characterFocus: option(focusType),
-  weapons: list(weaponType),
-  esoteries: list(esotery),
-  tricks: list(trick),
-};
-
 type actions =
   | SetCharacterType(option(characterType))
   | SetCharacterDescriptor(option(descriptorType))
@@ -46,17 +34,18 @@ let formSections = [
   CollectTricks,
 ];
 
-let isCharacterTypeSelected = state =>
+let isCharacterTypeSelected = (state: CharacterGeneratorState.t) =>
   Belt.Option.isSome(state.characterType);
 
-let isCharacterType = (state: state, characterType: characterType) => {
+let isCharacterType =
+    (state: CharacterGeneratorState.t, characterType: characterType) => {
   switch (state.characterType) {
   | None => false
   | Some(currentCharacterType) => currentCharacterType === characterType
   };
 };
 
-let hasEsoteries = (state: state) => {
+let hasEsoteries = (state: CharacterGeneratorState.t) => {
   switch (state.characterType) {
   | None => false
   | Some(characterType) =>
@@ -65,7 +54,7 @@ let hasEsoteries = (state: state) => {
   };
 };
 
-let hasTricks = (state: state) => {
+let hasTricks = (state: CharacterGeneratorState.t) => {
   switch (state.characterType) {
   | None => false
   | Some(characterType) =>
@@ -74,7 +63,8 @@ let hasTricks = (state: state) => {
   };
 };
 
-let formSectionIsVisible = (state: state, formSection: formSection) => {
+let formSectionIsVisible =
+    (state: CharacterGeneratorState.t, formSection: formSection) => {
   switch (formSection) {
   | CollectCharacterType => true
   | CollectCharacterDescriptor => true
@@ -87,20 +77,11 @@ let formSectionIsVisible = (state: state, formSection: formSection) => {
   };
 };
 
-let defaultState = (): state => {
-  characterType: None,
-  characterDescriptor: None,
-  characterFocus: None,
-  weapons: [],
-  esoteries: [],
-  tricks: [],
-};
-
 [@react.component]
 let make = () => {
   let (state, dispatch) =
     React.useReducer(
-      (state, action) =>
+      (state: CharacterGeneratorState.t, action) =>
         switch (action) {
         | SetCharacterType(characterType) => {...state, characterType}
         | SetCharacterDescriptor(characterDescriptor) => {
@@ -112,7 +93,7 @@ let make = () => {
         | SetEsoteries(esoteries) => {...state, esoteries}
         | SetTricks(tricks) => {...state, tricks}
         },
-      defaultState(),
+      CharacterGeneratorState.defaultState(),
     );
 
   Js.log(state);
