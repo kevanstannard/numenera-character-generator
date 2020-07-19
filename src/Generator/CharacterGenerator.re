@@ -203,7 +203,9 @@ let make = () => {
     <h1> {React.string("Numenera Character Generator")} </h1>
     <div className="row">
       <div className="col-sm-6"> formSectionEls </div>
-      <div className="col-sm-6"> {React.string("Output goes here")} </div>
+      <div className="col-sm-6">
+        <CharacterDisplay character={CharacterBuilder.build(state)} />
+      </div>
     </div>
   </div>;
 };

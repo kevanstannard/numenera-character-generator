@@ -7,6 +7,8 @@ var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 var Character$NumeneraCharacterGenerator = require("../Numenera/Character.bs.js");
 var TricksSelector$NumeneraCharacterGenerator = require("./TricksSelector.bs.js");
 var WeaponsSelector$NumeneraCharacterGenerator = require("./WeaponsSelector.bs.js");
+var CharacterBuilder$NumeneraCharacterGenerator = require("../Builder/CharacterBuilder.bs.js");
+var CharacterDisplay$NumeneraCharacterGenerator = require("../Builder/CharacterDisplay.bs.js");
 var EsoteriesSelector$NumeneraCharacterGenerator = require("./EsoteriesSelector.bs.js");
 var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./CharacterEdgeSelector.bs.js");
 var CharacterTypeSelector$NumeneraCharacterGenerator = require("./CharacterTypeSelector.bs.js");
@@ -270,7 +272,9 @@ function CharacterGenerator(Props) {
                       className: "col-sm-6"
                     }, formSectionEls), React.createElement("div", {
                       className: "col-sm-6"
-                    }, "Output goes here")));
+                    }, React.createElement(CharacterDisplay$NumeneraCharacterGenerator.make, {
+                          character: CharacterBuilder$NumeneraCharacterGenerator.build(state)
+                        }))));
 }
 
 var make = CharacterGenerator;

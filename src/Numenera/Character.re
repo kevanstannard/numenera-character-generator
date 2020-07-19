@@ -30,12 +30,20 @@ type characterInfo = {
 
 let characterTypes: list(characterType) = [Glave, Nano, Jack];
 
+let characterTypeToString = (characterType: characterType): string => {
+  switch (characterType) {
+  | Glave => "Glave"
+  | Nano => "Nano"
+  | Jack => "Jack"
+  };
+};
+
 let getCharacterInfo = (characterType: characterType): characterInfo => {
   switch (characterType) {
   | Glave => {
       characterType: Glave,
       id: "Glave",
-      name: "Glave",
+      name: characterTypeToString(Glave),
       baseEffort: 1,
       baseStat: {
         might: 11,
@@ -55,7 +63,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
   | Nano => {
       characterType: Nano,
       id: "Nano",
-      name: "Nano",
+      name: characterTypeToString(Nano),
       baseEffort: 1,
       baseStat: {
         might: 7,
@@ -75,7 +83,7 @@ let getCharacterInfo = (characterType: characterType): characterInfo => {
   | Jack => {
       characterType: Jack,
       id: "Jack",
-      name: "Jack",
+      name: characterTypeToString(Jack),
       baseEffort: 1,
       baseStat: {
         might: 10,

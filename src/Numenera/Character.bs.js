@@ -13,6 +13,18 @@ var characterTypes = {
   }
 };
 
+function characterTypeToString(characterType) {
+  switch (characterType) {
+    case /* Glave */0 :
+        return "Glave";
+    case /* Nano */1 :
+        return "Nano";
+    case /* Jack */2 :
+        return "Jack";
+    
+  }
+}
+
 function getCharacterInfo(characterType) {
   switch (characterType) {
     case /* Glave */0 :
@@ -115,6 +127,7 @@ function stringToCharacterType(id) {
 }
 
 exports.characterTypes = characterTypes;
+exports.characterTypeToString = characterTypeToString;
 exports.getCharacterInfo = getCharacterInfo;
 exports.characterInfos = characterInfos;
 exports.stringToCharacterType = stringToCharacterType;
