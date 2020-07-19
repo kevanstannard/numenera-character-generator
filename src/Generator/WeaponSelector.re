@@ -1,12 +1,5 @@
 open Weapon;
-
-type selectedWeapon = (int, weaponType);
-
-type state = list(selectedWeapon);
-
-type action =
-  | ClearWeaponSlot(int)
-  | SetWeaponSlot(int, weaponType);
+open SlotItem;
 
 let initialState = () => [];
 
@@ -20,34 +13,12 @@ let make =
   let (selectedWeapons, setSelectedWeapons) =
     React.useState(_ => initialState());
 
-  let clearWeaponSlot = slotToClear =>
-    selectedWeapons->Belt.List.keep(((slot, _)) => slot !== slotToClear);
-
-  let setWeaponSlot = (slotToSet, weaponType) =>
-    selectedWeapons
-    ->Belt.List.keep(((slot, _)) => slot !== slotToSet)
-    ->Belt.List.add((slotToSet, weaponType));
-
-  // TODO: Clean this up
-  // TODO: Sort by slot number
   let onChange = (slot: int, e: ReactEvent.Form.t): unit => {
     let value: string = e->ReactEvent.Form.target##value;
     let weaponType: option(weaponType) = stringToWeaponType(value);
-    switch (weaponType) {
-    | None =>
-      let newSelectedWeapons: list(selectedWeapon) = clearWeaponSlot(slot);
-      setSelectedWeapons(_ => newSelectedWeapons);
-      let weaponsTypes =
-        Belt.List.map(newSelectedWeapons, ((_, weaponType)) => weaponType);
-      onSelect(weaponsTypes);
-    | Some(weaponType) =>
-      let newSelectedWeapons: list(selectedWeapon) =
-        setWeaponSlot(slot, weaponType);
-      setSelectedWeapons(_ => newSelectedWeapons);
-      let weaponsTypes =
-        Belt.List.map(newSelectedWeapons, ((_, weaponType)) => weaponType);
-      onSelect(weaponsTypes);
-    };
+    let newSelectedWeapons = updateSlot(selectedWeapons, slot, weaponType);
+    setSelectedWeapons(_ => newSelectedWeapons);
+    onSelect(toItems(newSelectedWeapons));
   };
 
   let weaponSizeNames =
