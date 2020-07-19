@@ -316,6 +316,15 @@ let getWeaponInfo = (weaponType: weaponType) => {
 let weaponInfos: list(weaponInfo) =
   Belt.List.map(weaponTypes, getWeaponInfo);
 
+let weaponInfosFiltered = (weaponSizes: list(weaponSize)) =>
+  weaponSizes
+  ->Belt.List.map(weaponSize =>
+      Belt.List.keep(weaponInfos, weaponInfo =>
+        weaponInfo.weaponSize === weaponSize
+      )
+    )
+  ->Belt.List.flatten;
+
 let stringToWeaponType = (id: string): option(weaponType) => {
   Belt.List.reduce(weaponInfos, None, (acc, weaponInfo) => {
     switch (acc) {

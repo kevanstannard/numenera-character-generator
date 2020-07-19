@@ -30,8 +30,15 @@ function toItems(slotItems) {
               }));
 }
 
+function makeSlots(count) {
+  return Belt_List.makeBy(count, (function (i) {
+                return i + 1 | 0;
+              }));
+}
+
 exports.clearSlot = clearSlot;
 exports.setSlot = setSlot;
 exports.updateSlot = updateSlot;
 exports.toItems = toItems;
+exports.makeSlots = makeSlots;
 /* No side effect */

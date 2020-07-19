@@ -346,6 +346,14 @@ function getWeaponInfo(weaponType) {
 
 var weaponInfos = Belt_List.map(weaponTypes, getWeaponInfo);
 
+function weaponInfosFiltered(weaponSizes) {
+  return Belt_List.flatten(Belt_List.map(weaponSizes, (function (weaponSize) {
+                    return Belt_List.keep(weaponInfos, (function (weaponInfo) {
+                                  return weaponInfo.weaponSize === weaponSize;
+                                }));
+                  })));
+}
+
 function stringToWeaponType(id) {
   return Belt_List.reduce(weaponInfos, undefined, (function (acc, weaponInfo) {
                 if (acc !== undefined) {
@@ -374,5 +382,6 @@ exports.getWeaponSizeInfo = getWeaponSizeInfo;
 exports.weaponTypes = weaponTypes;
 exports.getWeaponInfo = getWeaponInfo;
 exports.weaponInfos = weaponInfos;
+exports.weaponInfosFiltered = weaponInfosFiltered;
 exports.stringToWeaponType = stringToWeaponType;
 /* weaponInfos Not a pure module */

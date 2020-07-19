@@ -6,9 +6,27 @@ var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Weapon$NumeneraCharacterGenerator = require("../Numenera/Weapon.bs.js");
 var SlotItem$NumeneraCharacterGenerator = require("../Util/SlotItem.bs.js");
 
-function initialState(param) {
-  return /* [] */0;
+function WeaponSelector$SingleWeaponSelector(Props) {
+  var label = Props.label;
+  var availableWeapons = Props.availableWeapons;
+  var onSelect = Props.onSelect;
+  var onChange = function (e) {
+    var value = e.target.value;
+    return Curry._1(onSelect, Weapon$NumeneraCharacterGenerator.stringToWeaponType(value));
+  };
+  return React.createElement("p", undefined, React.createElement("label", undefined, label + ": ", React.createElement("select", {
+                      onChange: onChange
+                    }, React.createElement("option", undefined, "Choose a weapon"), Belt_List.toArray(Belt_List.map(availableWeapons, (function (weaponInfo) {
+                                return React.createElement("option", {
+                                            key: weaponInfo.id,
+                                            value: weaponInfo.id
+                                          }, weaponInfo.name);
+                              }))))));
 }
+
+var SingleWeaponSelector = {
+  make: WeaponSelector$SingleWeaponSelector
+};
 
 function WeaponSelector(Props) {
   var weaponCount = Props.weaponCount;
@@ -27,40 +45,27 @@ function WeaponSelector(Props) {
               return acc + (", " + name);
             }
           }));
-  var availableWeapons = Belt_List.flatten(Belt_List.map(weaponSizes, (function (weaponSize) {
-              return Belt_List.keep(Weapon$NumeneraCharacterGenerator.weaponInfos, (function (weaponInfo) {
-                            return weaponInfo.weaponSize === weaponSize;
-                          }));
-            })));
-  var weaponSlots = Belt_List.makeBy(weaponCount, (function (i) {
-          return i + 1 | 0;
-        }));
-  return React.createElement("div", undefined, React.createElement("h2", undefined, "Weapons"), React.createElement("p", undefined, "Weapon sizes: " + weaponSizeNames), Belt_List.toArray(Belt_List.map(weaponSlots, (function (weaponSlot) {
-                        var label = "Weapon #" + String(weaponSlot);
-                        var key = "weapon-" + String(weaponSlot);
-                        return React.createElement("p", {
+  var availableWeapons = Weapon$NumeneraCharacterGenerator.weaponInfosFiltered(weaponSizes);
+  return React.createElement("div", undefined, React.createElement("h2", undefined, "Weapons"), React.createElement("p", undefined, "Weapon sizes: " + weaponSizeNames), Belt_List.toArray(Belt_List.map(SlotItem$NumeneraCharacterGenerator.makeSlots(weaponCount), (function (slot) {
+                        var label = "Weapon #" + String(slot);
+                        var key = "weapon-" + String(slot);
+                        return React.createElement(WeaponSelector$SingleWeaponSelector, {
+                                    label: label,
+                                    availableWeapons: availableWeapons,
+                                    onSelect: (function (param) {
+                                        var newSelectedWeapons = SlotItem$NumeneraCharacterGenerator.updateSlot(selectedWeapons, slot, param);
+                                        Curry._1(setSelectedWeapons, (function (param) {
+                                                return newSelectedWeapons;
+                                              }));
+                                        return Curry._1(onSelect, SlotItem$NumeneraCharacterGenerator.toItems(newSelectedWeapons));
+                                      }),
                                     key: key
-                                  }, React.createElement("label", undefined, label + ": ", React.createElement("select", {
-                                            onChange: (function (param) {
-                                                var value = param.target.value;
-                                                var weaponType = Weapon$NumeneraCharacterGenerator.stringToWeaponType(value);
-                                                var newSelectedWeapons = SlotItem$NumeneraCharacterGenerator.updateSlot(selectedWeapons, weaponSlot, weaponType);
-                                                Curry._1(setSelectedWeapons, (function (param) {
-                                                        return newSelectedWeapons;
-                                                      }));
-                                                return Curry._1(onSelect, SlotItem$NumeneraCharacterGenerator.toItems(newSelectedWeapons));
-                                              })
-                                          }, React.createElement("option", undefined, "Choose a weapon"), Belt_List.toArray(Belt_List.map(availableWeapons, (function (weaponInfo) {
-                                                      return React.createElement("option", {
-                                                                  key: weaponInfo.id,
-                                                                  value: weaponInfo.id
-                                                                }, weaponInfo.name);
-                                                    }))))));
+                                  });
                       }))));
 }
 
 var make = WeaponSelector;
 
-exports.initialState = initialState;
+exports.SingleWeaponSelector = SingleWeaponSelector;
 exports.make = make;
 /* react Not a pure module */

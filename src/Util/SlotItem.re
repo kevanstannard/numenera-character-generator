@@ -20,3 +20,5 @@ let updateSlot = (slotItems: slotItems('a), slot: int, item: option('a)) => {
 
 let toItems = (slotItems: slotItems('a)): list('a) =>
   slotItems->Belt.List.map(({item}) => item);
+
+let makeSlots = (count: int) => Belt.List.makeBy(count, i => i + 1);
