@@ -5,7 +5,7 @@ var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Focus$NumeneraCharacterGenerator = require("../Numenera/Focus.bs.js");
 
-function CharacterFocusSelector(Props) {
+function FocusTypeSelector(Props) {
   var onSelect = Props.onSelect;
   var onChange = function (e) {
     var value = e.target.value;
@@ -21,7 +21,7 @@ function CharacterFocusSelector(Props) {
                           })))));
 }
 
-var make = CharacterFocusSelector;
+var make = FocusTypeSelector;
 
 exports.make = make;
 /* react Not a pure module */

@@ -5,7 +5,7 @@ var React = require("react");
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Descriptor$NumeneraCharacterGenerator = require("../Numenera/Descriptor.bs.js");
 
-function CharacterDescriptorSelector(Props) {
+function DescriptorTypeSelector(Props) {
   var onSelect = Props.onSelect;
   var onChange = function (e) {
     var value = e.target.value;
@@ -21,7 +21,7 @@ function CharacterDescriptorSelector(Props) {
                           })))));
 }
 
-var make = CharacterDescriptorSelector;
+var make = DescriptorTypeSelector;
 
 exports.make = make;
 /* react Not a pure module */

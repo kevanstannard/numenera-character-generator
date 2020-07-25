@@ -25,6 +25,19 @@ let characterTypeToDisplay =
   | Some(characterType) => Character.characterTypeToString(characterType)
   };
 
+let descriptorTypeToDisplay =
+    (descriptorType: option(Descriptor.descriptorType)): string =>
+  switch (descriptorType) {
+  | None => ""
+  | Some(descriptorType) => Descriptor.descriptorTypeToString(descriptorType)
+  };
+
+let focusTypeToDisplay = (focusType: option(Focus.focusType)): string =>
+  switch (focusType) {
+  | None => ""
+  | Some(focusType) => Focus.focusTypeToString(focusType)
+  };
+
 let effortToDisplay = (effort: int) => string_of_int(effort);
 
 let statValueToDisplay =
@@ -51,8 +64,6 @@ let edgeValueToDisplay =
 
 [@react.component]
 let make = (~character: CharacterBuilder.character) => {
-  Js.log2("character >>>", character);
-
   let mightDisplay = statValueToDisplay(character.might);
   let speedDisplay = statValueToDisplay(character.speed);
   let intellectDisplay = statValueToDisplay(character.intellect);
@@ -64,6 +75,12 @@ let make = (~character: CharacterBuilder.character) => {
   let content =
     line("CHARACTER TYPE")
     ++ line(characterTypeToDisplay(character.characterType))
+    ++ line("")
+    ++ line("DESCRIPTOR")
+    ++ line(descriptorTypeToDisplay(character.descriptorType))
+    ++ line("")
+    ++ line("FOCUS")
+    ++ line(focusTypeToDisplay(character.focusType))
     ++ line("")
     ++ line("EFFORT")
     ++ line(effortToDisplay(character.effort))

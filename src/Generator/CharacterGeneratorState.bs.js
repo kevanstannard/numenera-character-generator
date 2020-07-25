@@ -4,8 +4,8 @@
 function defaultState(param) {
   return {
           characterType: undefined,
-          characterDescriptor: undefined,
-          characterFocus: undefined,
+          descriptorType: undefined,
+          focusType: undefined,
           weapons: /* [] */0,
           esoteries: /* [] */0,
           tricks: /* [] */0,

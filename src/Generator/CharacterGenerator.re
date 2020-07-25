@@ -7,8 +7,8 @@ open Trick;
 
 type actions =
   | SetCharacterType(option(characterType))
-  | SetCharacterDescriptor(option(descriptorType))
-  | SetCharacterFocus(option(focusType))
+  | SetDescriptorType(option(descriptorType))
+  | SetFocusType(option(focusType))
   | SetExtraStats(characterInfoStat)
   | SetExtraEdges(characterInfoEdge)
   | SetWeapons(list(weaponType))
@@ -17,8 +17,8 @@ type actions =
 
 type formSection =
   | CollectCharacterType
-  | CollectCharacterDescriptor
-  | CollectCharacterFocus
+  | CollectDescriptorType
+  | CollectFocusType
   | CollectCharacterStats
   | CollectCharacterEdge
   | CollectWeapons
@@ -27,8 +27,8 @@ type formSection =
 
 let formSections = [
   CollectCharacterType,
-  CollectCharacterDescriptor,
-  CollectCharacterFocus,
+  CollectDescriptorType,
+  CollectFocusType,
   CollectCharacterStats,
   CollectCharacterEdge,
   CollectWeapons,
@@ -69,8 +69,8 @@ let formSectionIsVisible =
     (state: CharacterGeneratorState.t, formSection: formSection) => {
   switch (formSection) {
   | CollectCharacterType => true
-  | CollectCharacterDescriptor => true
-  | CollectCharacterFocus => true
+  | CollectDescriptorType => true
+  | CollectFocusType => true
   | CollectCharacterStats => true
   | CollectCharacterEdge => isCharacterType(state, Jack)
   | CollectWeapons => isCharacterTypeSelected(state)
@@ -86,11 +86,8 @@ let make = () => {
       (state: CharacterGeneratorState.t, action) =>
         switch (action) {
         | SetCharacterType(characterType) => {...state, characterType}
-        | SetCharacterDescriptor(characterDescriptor) => {
-            ...state,
-            characterDescriptor,
-          }
-        | SetCharacterFocus(characterFocus) => {...state, characterFocus}
+        | SetDescriptorType(descriptorType) => {...state, descriptorType}
+        | SetFocusType(focusType) => {...state, focusType}
         | SetExtraStats(extraStats) => {...state, extraStats}
         | SetExtraEdges(extraEdges) => {...state, extraEdges}
         | SetWeapons(weapons) => {...state, weapons}
@@ -123,19 +120,17 @@ let make = () => {
                   dispatch(SetCharacterType(characterType))
                 }}
               />
-            | CollectCharacterDescriptor =>
-              <CharacterDescriptorSelector
-                key="CharacterDescriptorSelector"
-                onSelect={characterDescriptor => {
-                  dispatch(SetCharacterDescriptor(characterDescriptor))
+            | CollectDescriptorType =>
+              <DescriptorTypeSelector
+                key="DescriptorTypeSelector"
+                onSelect={descriptorType => {
+                  dispatch(SetDescriptorType(descriptorType))
                 }}
               />
-            | CollectCharacterFocus =>
-              <CharacterFocusSelector
-                key="CharacterFocusSelector"
-                onSelect={characterFocus => {
-                  dispatch(SetCharacterFocus(characterFocus))
-                }}
+            | CollectFocusType =>
+              <FocusTypeSelector
+                key="FocusTypeSelector"
+                onSelect={focusType => {dispatch(SetFocusType(focusType))}}
               />
             | CollectCharacterStats =>
               <CharacterStatsSelector

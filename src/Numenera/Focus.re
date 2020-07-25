@@ -33,6 +33,38 @@ type focusInfo = {
   name: string,
 };
 
+let focusTypeToString = (focusType): string => {
+  switch (focusType) {
+  | BearsAHaloOfFire => "Bears a Halo of Fire"
+  | CommandsMentalPowers => "Commands Mental Powers"
+  | ControlsBeasts => "Controls Beasts"
+  | ControlsGravity => "Controls Gravity"
+  | CraftsIllusions => "Crafts Illusions"
+  | EmploysMagnetism => "Employs Magnetism"
+  | Entertains => "Entertains"
+  | ExistsPartiallyOutOfPhase => "Exists Partially Out Of Phase"
+  | ExploresDarkPlaces => "Explores Dark Places"
+  | FightsWithPanache => "Fights With Panache"
+  | FocusesMindOverMatter => "Focuses Mind Over Matter"
+  | FusesFleshAndSteel => "Fuses Flesh and Steel"
+  | HowlsAtTheMoon => "Howls at the Moon"
+  | Hunts => "Hunts"
+  | LivesInTheWilderness => "Lives in the Wilderness"
+  | MastersDefense => "Masters Defense"
+  | MastersWeaponry => "Masters Weaponry"
+  | Murders => "Murders"
+  | Rages => "Rages"
+  | RidesTheLightening => "Rides The Lightening"
+  | SpeaksWithASilverTongue => "Speaks with a Silver Tongue"
+  | TalksToMachines => "Talks to Machines"
+  | WearsASheenOfIce => "Wears a Sheen of Ice"
+  | WieldsPowerWithPrecision => "Wields Power With Precision"
+  | WieldsTwoWeaponsAtOnce => "Wields Two Weapons at Once"
+  | WorksTheBackAlleys => "Works the Back Alleys"
+  | WorksMiracles => "Works Miracles"
+  };
+};
+
 let focusTypes: list(focusType) = [
   BearsAHaloOfFire,
   CommandsMentalPowers,

@@ -7,8 +7,8 @@ open Trick;
 
 type t = {
   characterType: option(characterType),
-  characterDescriptor: option(descriptorType),
-  characterFocus: option(focusType),
+  descriptorType: option(descriptorType),
+  focusType: option(focusType),
   weapons: list(weaponType),
   esoteries: list(esotery),
   tricks: list(trick),
@@ -18,8 +18,8 @@ type t = {
 
 let defaultState = (): t => {
   characterType: None,
-  characterDescriptor: None,
-  characterFocus: None,
+  descriptorType: None,
+  focusType: None,
   weapons: [],
   esoteries: [],
   tricks: [],

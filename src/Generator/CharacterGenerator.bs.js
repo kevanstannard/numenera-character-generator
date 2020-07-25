@@ -10,19 +10,19 @@ var WeaponsSelector$NumeneraCharacterGenerator = require("./WeaponsSelector.bs.j
 var CharacterBuilder$NumeneraCharacterGenerator = require("../Builder/CharacterBuilder.bs.js");
 var CharacterDisplay$NumeneraCharacterGenerator = require("../Builder/CharacterDisplay.bs.js");
 var EsoteriesSelector$NumeneraCharacterGenerator = require("./EsoteriesSelector.bs.js");
+var FocusTypeSelector$NumeneraCharacterGenerator = require("./FocusTypeSelector.bs.js");
 var CharacterEdgeSelector$NumeneraCharacterGenerator = require("./CharacterEdgeSelector.bs.js");
 var CharacterTypeSelector$NumeneraCharacterGenerator = require("./CharacterTypeSelector.bs.js");
-var CharacterFocusSelector$NumeneraCharacterGenerator = require("./CharacterFocusSelector.bs.js");
 var CharacterStatsSelector$NumeneraCharacterGenerator = require("./CharacterStatsSelector.bs.js");
+var DescriptorTypeSelector$NumeneraCharacterGenerator = require("./DescriptorTypeSelector.bs.js");
 var CharacterGeneratorState$NumeneraCharacterGenerator = require("./CharacterGeneratorState.bs.js");
-var CharacterDescriptorSelector$NumeneraCharacterGenerator = require("./CharacterDescriptorSelector.bs.js");
 
 var formSections = {
   hd: /* CollectCharacterType */0,
   tl: {
-    hd: /* CollectCharacterDescriptor */1,
+    hd: /* CollectDescriptorType */1,
     tl: {
-      hd: /* CollectCharacterFocus */2,
+      hd: /* CollectFocusType */2,
       tl: {
         hd: /* CollectCharacterStats */3,
         tl: {
@@ -77,8 +77,8 @@ function hasTricks(state) {
 function formSectionIsVisible(state, formSection) {
   switch (formSection) {
     case /* CollectCharacterType */0 :
-    case /* CollectCharacterDescriptor */1 :
-    case /* CollectCharacterFocus */2 :
+    case /* CollectDescriptorType */1 :
+    case /* CollectFocusType */2 :
     case /* CollectCharacterStats */3 :
         return true;
     case /* CollectCharacterEdge */4 :
@@ -99,30 +99,30 @@ function CharacterGenerator(Props) {
             case /* SetCharacterType */0 :
                 return {
                         characterType: action._0,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: state.characterFocus,
+                        descriptorType: state.descriptorType,
+                        focusType: state.focusType,
                         weapons: state.weapons,
                         esoteries: state.esoteries,
                         tricks: state.tricks,
                         extraStats: state.extraStats,
                         extraEdges: state.extraEdges
                       };
-            case /* SetCharacterDescriptor */1 :
+            case /* SetDescriptorType */1 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: action._0,
-                        characterFocus: state.characterFocus,
+                        descriptorType: action._0,
+                        focusType: state.focusType,
                         weapons: state.weapons,
                         esoteries: state.esoteries,
                         tricks: state.tricks,
                         extraStats: state.extraStats,
                         extraEdges: state.extraEdges
                       };
-            case /* SetCharacterFocus */2 :
+            case /* SetFocusType */2 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: action._0,
+                        descriptorType: state.descriptorType,
+                        focusType: action._0,
                         weapons: state.weapons,
                         esoteries: state.esoteries,
                         tricks: state.tricks,
@@ -132,8 +132,8 @@ function CharacterGenerator(Props) {
             case /* SetExtraStats */3 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: state.characterFocus,
+                        descriptorType: state.descriptorType,
+                        focusType: state.focusType,
                         weapons: state.weapons,
                         esoteries: state.esoteries,
                         tricks: state.tricks,
@@ -143,8 +143,8 @@ function CharacterGenerator(Props) {
             case /* SetExtraEdges */4 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: state.characterFocus,
+                        descriptorType: state.descriptorType,
+                        focusType: state.focusType,
                         weapons: state.weapons,
                         esoteries: state.esoteries,
                         tricks: state.tricks,
@@ -154,8 +154,8 @@ function CharacterGenerator(Props) {
             case /* SetWeapons */5 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: state.characterFocus,
+                        descriptorType: state.descriptorType,
+                        focusType: state.focusType,
                         weapons: action._0,
                         esoteries: state.esoteries,
                         tricks: state.tricks,
@@ -165,8 +165,8 @@ function CharacterGenerator(Props) {
             case /* SetEsoteries */6 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: state.characterFocus,
+                        descriptorType: state.descriptorType,
+                        focusType: state.focusType,
                         weapons: state.weapons,
                         esoteries: action._0,
                         tricks: state.tricks,
@@ -176,8 +176,8 @@ function CharacterGenerator(Props) {
             case /* SetTricks */7 :
                 return {
                         characterType: state.characterType,
-                        characterDescriptor: state.characterDescriptor,
-                        characterFocus: state.characterFocus,
+                        descriptorType: state.descriptorType,
+                        focusType: state.focusType,
                         weapons: state.weapons,
                         esoteries: state.esoteries,
                         tricks: action._0,
@@ -215,26 +215,26 @@ function CharacterGenerator(Props) {
                               key: "CharacterTypeSelector"
                             });
                         break;
-                    case /* CollectCharacterDescriptor */1 :
-                        el = React.createElement(CharacterDescriptorSelector$NumeneraCharacterGenerator.make, {
-                              onSelect: (function (characterDescriptor) {
+                    case /* CollectDescriptorType */1 :
+                        el = React.createElement(DescriptorTypeSelector$NumeneraCharacterGenerator.make, {
+                              onSelect: (function (descriptorType) {
                                   return Curry._1(dispatch, {
-                                              TAG: /* SetCharacterDescriptor */1,
-                                              _0: characterDescriptor
+                                              TAG: /* SetDescriptorType */1,
+                                              _0: descriptorType
                                             });
                                 }),
-                              key: "CharacterDescriptorSelector"
+                              key: "DescriptorTypeSelector"
                             });
                         break;
-                    case /* CollectCharacterFocus */2 :
-                        el = React.createElement(CharacterFocusSelector$NumeneraCharacterGenerator.make, {
-                              onSelect: (function (characterFocus) {
+                    case /* CollectFocusType */2 :
+                        el = React.createElement(FocusTypeSelector$NumeneraCharacterGenerator.make, {
+                              onSelect: (function (focusType) {
                                   return Curry._1(dispatch, {
-                                              TAG: /* SetCharacterFocus */2,
-                                              _0: characterFocus
+                                              TAG: /* SetFocusType */2,
+                                              _0: focusType
                                             });
                                 }),
-                              key: "CharacterFocusSelector"
+                              key: "FocusTypeSelector"
                             });
                         break;
                     case /* CollectCharacterStats */3 :

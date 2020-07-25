@@ -10,6 +10,8 @@ type edgeValue = {
 
 type character = {
   characterType: option(Character.characterType),
+  descriptorType: option(Descriptor.descriptorType),
+  focusType: option(Focus.focusType),
   effort: int,
   might: list(statValue),
   speed: list(statValue),
@@ -22,6 +24,8 @@ type character = {
 let initialCharacter = (): character => {
   {
     characterType: None,
+    descriptorType: None,
+    focusType: None,
     effort: 0,
     might: [],
     speed: [],
@@ -36,6 +40,18 @@ let setCharacterType =
     (character: character, state: CharacterGeneratorState.t): character => {
   ...character,
   characterType: state.characterType,
+};
+
+let setDescriptorType =
+    (character: character, state: CharacterGeneratorState.t): character => {
+  ...character,
+  descriptorType: state.descriptorType,
+};
+
+let setFocusType =
+    (character: character, state: CharacterGeneratorState.t): character => {
+  ...character,
+  focusType: state.focusType,
 };
 
 let addEffort = (character: character, effort: int): character =>
@@ -147,6 +163,8 @@ let addExtraEdges = (character: character, state: CharacterGeneratorState.t) => 
 let build = (state: CharacterGeneratorState.t): character => {
   initialCharacter()
   ->setCharacterType(state)
+  ->setDescriptorType(state)
+  ->setFocusType(state)
   ->addEffort(1)
   ->addBaseStats(state)
   ->addExtraStats(state)

@@ -2,6 +2,66 @@
 
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 
+function focusTypeToString(focusType) {
+  switch (focusType) {
+    case /* BearsAHaloOfFire */0 :
+        return "Bears a Halo of Fire";
+    case /* CommandsMentalPowers */1 :
+        return "Commands Mental Powers";
+    case /* ControlsBeasts */2 :
+        return "Controls Beasts";
+    case /* ControlsGravity */3 :
+        return "Controls Gravity";
+    case /* CraftsIllusions */4 :
+        return "Crafts Illusions";
+    case /* EmploysMagnetism */5 :
+        return "Employs Magnetism";
+    case /* Entertains */6 :
+        return "Entertains";
+    case /* ExistsPartiallyOutOfPhase */7 :
+        return "Exists Partially Out Of Phase";
+    case /* ExploresDarkPlaces */8 :
+        return "Explores Dark Places";
+    case /* FightsWithPanache */9 :
+        return "Fights With Panache";
+    case /* FocusesMindOverMatter */10 :
+        return "Focuses Mind Over Matter";
+    case /* FusesFleshAndSteel */11 :
+        return "Fuses Flesh and Steel";
+    case /* HowlsAtTheMoon */12 :
+        return "Howls at the Moon";
+    case /* Hunts */13 :
+        return "Hunts";
+    case /* LivesInTheWilderness */14 :
+        return "Lives in the Wilderness";
+    case /* MastersDefense */15 :
+        return "Masters Defense";
+    case /* MastersWeaponry */16 :
+        return "Masters Weaponry";
+    case /* Murders */17 :
+        return "Murders";
+    case /* Rages */18 :
+        return "Rages";
+    case /* RidesTheLightening */19 :
+        return "Rides The Lightening";
+    case /* SpeaksWithASilverTongue */20 :
+        return "Speaks with a Silver Tongue";
+    case /* TalksToMachines */21 :
+        return "Talks to Machines";
+    case /* WearsASheenOfIce */22 :
+        return "Wears a Sheen of Ice";
+    case /* WieldsPowerWithPrecision */23 :
+        return "Wields Power With Precision";
+    case /* WieldsTwoWeaponsAtOnce */24 :
+        return "Wields Two Weapons at Once";
+    case /* WorksTheBackAlleys */25 :
+        return "Works the Back Alleys";
+    case /* WorksMiracles */26 :
+        return "Works Miracles";
+    
+  }
+}
+
 var focusTypes = {
   hd: /* BearsAHaloOfFire */0,
   tl: {
@@ -267,6 +327,7 @@ function stringToFocusType(id) {
               }));
 }
 
+exports.focusTypeToString = focusTypeToString;
 exports.focusTypes = focusTypes;
 exports.getFocusInfo = getFocusInfo;
 exports.focusInfos = focusInfos;

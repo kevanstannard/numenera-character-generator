@@ -6,6 +6,8 @@ var Character$NumeneraCharacterGenerator = require("../Numenera/Character.bs.js"
 function initialCharacter(param) {
   return {
           characterType: undefined,
+          descriptorType: undefined,
+          focusType: undefined,
           effort: 0,
           might: /* [] */0,
           speed: /* [] */0,
@@ -19,6 +21,38 @@ function initialCharacter(param) {
 function setCharacterType(character, state) {
   return {
           characterType: state.characterType,
+          descriptorType: character.descriptorType,
+          focusType: character.focusType,
+          effort: character.effort,
+          might: character.might,
+          speed: character.speed,
+          intellect: character.intellect,
+          mightEdge: character.mightEdge,
+          speedEdge: character.speedEdge,
+          intellectEdge: character.intellectEdge
+        };
+}
+
+function setDescriptorType(character, state) {
+  return {
+          characterType: character.characterType,
+          descriptorType: state.descriptorType,
+          focusType: character.focusType,
+          effort: character.effort,
+          might: character.might,
+          speed: character.speed,
+          intellect: character.intellect,
+          mightEdge: character.mightEdge,
+          speedEdge: character.speedEdge,
+          intellectEdge: character.intellectEdge
+        };
+}
+
+function setFocusType(character, state) {
+  return {
+          characterType: character.characterType,
+          descriptorType: character.descriptorType,
+          focusType: state.focusType,
           effort: character.effort,
           might: character.might,
           speed: character.speed,
@@ -33,6 +67,8 @@ function addEffort(character, effort) {
   if (effort > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: effort,
             might: character.might,
             speed: character.speed,
@@ -50,6 +86,8 @@ function addMight(character, amount, reason) {
   if (amount > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: character.effort,
             might: Belt_List.add(character.might, {
                   amount: amount,
@@ -70,6 +108,8 @@ function addSpeed(character, amount, reason) {
   if (amount > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: character.effort,
             might: character.might,
             speed: Belt_List.add(character.speed, {
@@ -90,6 +130,8 @@ function addIntellect(character, amount, reason) {
   if (amount > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: character.effort,
             might: character.might,
             speed: character.speed,
@@ -127,6 +169,8 @@ function addMightEdge(character, amount, reason) {
   if (amount > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: character.effort,
             might: character.might,
             speed: character.speed,
@@ -147,6 +191,8 @@ function addSpeedEdge(character, amount, reason) {
   if (amount > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: character.effort,
             might: character.might,
             speed: character.speed,
@@ -167,6 +213,8 @@ function addIntellectEdge(character, amount, reason) {
   if (amount > 0) {
     return {
             characterType: character.characterType,
+            descriptorType: character.descriptorType,
+            focusType: character.focusType,
             effort: character.effort,
             might: character.might,
             speed: character.speed,
@@ -201,20 +249,13 @@ function addExtraEdges(character, state) {
 }
 
 function build(state) {
-  return addExtraEdges(addBaseEdges(addExtraStats(addBaseStats(addEffort(setCharacterType({
-                                  characterType: undefined,
-                                  effort: 0,
-                                  might: /* [] */0,
-                                  speed: /* [] */0,
-                                  intellect: /* [] */0,
-                                  mightEdge: /* [] */0,
-                                  speedEdge: /* [] */0,
-                                  intellectEdge: /* [] */0
-                                }, state), 1), state), state), state), state);
+  return addExtraEdges(addBaseEdges(addExtraStats(addBaseStats(addEffort(setFocusType(setDescriptorType(setCharacterType(initialCharacter(undefined), state), state), state), 1), state), state), state), state);
 }
 
 exports.initialCharacter = initialCharacter;
 exports.setCharacterType = setCharacterType;
+exports.setDescriptorType = setDescriptorType;
+exports.setFocusType = setFocusType;
 exports.addEffort = addEffort;
 exports.addMight = addMight;
 exports.addSpeed = addSpeed;
