@@ -9,6 +9,7 @@ type actions =
   | SetCharacterType(option(characterType))
   | SetCharacterDescriptor(option(descriptorType))
   | SetCharacterFocus(option(focusType))
+  | SetExtraStats(characterInfoStat)
   | SetWeapons(list(weaponType))
   | SetEsoteries(list(esotery))
   | SetTricks(list(trick));
@@ -89,14 +90,13 @@ let make = () => {
             characterDescriptor,
           }
         | SetCharacterFocus(characterFocus) => {...state, characterFocus}
+        | SetExtraStats(extraStats) => {...state, extraStats}
         | SetWeapons(weapons) => {...state, weapons}
         | SetEsoteries(esoteries) => {...state, esoteries}
         | SetTricks(tricks) => {...state, tricks}
         },
       CharacterGeneratorState.defaultState(),
     );
-
-  Js.log(state);
 
   let determineVisibleFormSections = (): list(formSection) => {
     formSections
@@ -136,7 +136,13 @@ let make = () => {
                 }}
               />
             | CollectCharacterStats =>
-              <CharacterStatsSelector key="CharacterStatsSelector" />
+              <CharacterStatsSelector
+                key="CharacterStatsSelector"
+                stats={state.extraStats}
+                onUpdate={extraStats => {
+                  dispatch(SetExtraStats(extraStats))
+                }}
+              />
             | CollectCharacterEdge =>
               <CharacterEdgeSelector key="CharacterEdgeSelector" />
             | CollectWeapons =>

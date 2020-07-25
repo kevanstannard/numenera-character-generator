@@ -18,6 +18,23 @@ type descriptorInfo = {
   name: string,
 };
 
+let descriptorTypeToString = (descriptorType): string => {
+  switch (descriptorType) {
+  | Charming => "Charming"
+  | Clever => "Clever"
+  | Graceful => "Graceful"
+  | Intelligent => "Intelligent"
+  | Learned => "Learned"
+  | MysticalMechanical => "Mystical/Mechanical"
+  | Rugged => "Rugged"
+  | Stealthy => "Stealthy"
+  | Strong => "Strong"
+  | StrongWilled => "Strong willed"
+  | Swift => "Swift"
+  | Tough => "Tough"
+  };
+};
+
 let descriptorTypes: list(descriptorType) = [
   Charming,
   Clever,
@@ -35,30 +52,66 @@ let descriptorTypes: list(descriptorType) = [
 
 let getDescriptorInfo = descriptorType => {
   switch (descriptorType) {
-  | Charming => {descriptorType: Charming, id: "Charming", name: "Charming"}
-  | Clever => {descriptorType: Clever, id: "Clever", name: "Clever"}
-  | Graceful => {descriptorType: Graceful, id: "Graceful", name: "Graceful"}
+  | Charming => {
+      descriptorType: Charming,
+      id: "Charming",
+      name: descriptorTypeToString(Charming),
+    }
+  | Clever => {
+      descriptorType: Clever,
+      id: "Clever",
+      name: descriptorTypeToString(Clever),
+    }
+  | Graceful => {
+      descriptorType: Graceful,
+      id: "Graceful",
+      name: descriptorTypeToString(Graceful),
+    }
   | Intelligent => {
       descriptorType: Intelligent,
       id: "Intelligent",
-      name: "Intelligent",
+      name: descriptorTypeToString(Intelligent),
     }
-  | Learned => {descriptorType: Learned, id: "Learned", name: "Learned"}
+  | Learned => {
+      descriptorType: Learned,
+      id: "Learned",
+      name: descriptorTypeToString(Learned),
+    }
   | MysticalMechanical => {
       descriptorType: MysticalMechanical,
       id: "MysticalMechanical",
-      name: "Mystical/Mechanical",
+      name: descriptorTypeToString(MysticalMechanical),
     }
-  | Rugged => {descriptorType: Rugged, id: "Rugged", name: "Rugged"}
-  | Stealthy => {descriptorType: Stealthy, id: "Stealthy", name: "Stealthy"}
-  | Strong => {descriptorType: Strong, id: "Strong", name: "Strong"}
+  | Rugged => {
+      descriptorType: Rugged,
+      id: "Rugged",
+      name: descriptorTypeToString(Rugged),
+    }
+  | Stealthy => {
+      descriptorType: Stealthy,
+      id: "Stealthy",
+      name: descriptorTypeToString(Stealthy),
+    }
+  | Strong => {
+      descriptorType: Strong,
+      id: "Strong",
+      name: descriptorTypeToString(Strong),
+    }
   | StrongWilled => {
       descriptorType: StrongWilled,
       id: "StrongWilled",
-      name: "Strong Willed",
+      name: descriptorTypeToString(StrongWilled),
     }
-  | Swift => {descriptorType: Swift, id: "Swift", name: "Swift"}
-  | Tough => {descriptorType: Tough, id: "Tough", name: "Tough"}
+  | Swift => {
+      descriptorType: Swift,
+      id: "Swift",
+      name: descriptorTypeToString(Swift),
+    }
+  | Tough => {
+      descriptorType: Tough,
+      id: "Tough",
+      name: descriptorTypeToString(Tough),
+    }
   };
 };
 

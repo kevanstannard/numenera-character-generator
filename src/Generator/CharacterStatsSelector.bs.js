@@ -4,111 +4,76 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Caml_format = require("bs-platform/lib/js/caml_format.js");
 
-function initialState(param) {
-  return {
-          available: 6,
-          might: 0,
-          speed: 0,
-          intellect: 0
-        };
+function calculateAvailable(might, speed, intellect) {
+  return ((6 - might | 0) - speed | 0) - intellect | 0;
 }
 
 function CharacterStatsSelector(Props) {
-  var match = React.useReducer((function (state, action) {
-          switch (action.TAG | 0) {
-            case /* UpdateMight */0 :
-                var newMight = action._0;
-                var total = (newMight + state.speed | 0) + state.intellect | 0;
-                if (total <= 6) {
-                  return {
-                          available: 6 - total | 0,
-                          might: newMight,
-                          speed: state.speed,
-                          intellect: state.intellect
-                        };
-                } else {
-                  return state;
-                }
-            case /* UpdateSpeed */1 :
-                var newSpeed = action._0;
-                var total$1 = (state.might + newSpeed | 0) + state.intellect | 0;
-                if (total$1 <= 6) {
-                  return {
-                          available: 6 - total$1 | 0,
-                          might: state.might,
-                          speed: newSpeed,
-                          intellect: state.intellect
-                        };
-                } else {
-                  return state;
-                }
-            case /* UpdateIntellect */2 :
-                var newIntellect = action._0;
-                var total$2 = (state.might + state.speed | 0) + newIntellect | 0;
-                if (total$2 <= 6) {
-                  return {
-                          available: 6 - total$2 | 0,
-                          might: state.might,
-                          speed: state.speed,
-                          intellect: newIntellect
-                        };
-                } else {
-                  return state;
-                }
-            
-          }
-        }), {
-        available: 6,
-        might: 0,
-        speed: 0,
-        intellect: 0
-      });
-  var dispatch = match[1];
-  var state = match[0];
+  var stats = Props.stats;
+  var onUpdate = Props.onUpdate;
+  var available = calculateAvailable(stats.might, stats.speed, stats.intellect);
   var onMightChange = function (e) {
-    var value = e.target.value;
-    return Curry._1(dispatch, {
-                TAG: /* UpdateMight */0,
-                _0: Caml_format.caml_int_of_string(value)
-              });
+    var newMight = Caml_format.caml_int_of_string(e.target.value);
+    var newAvailable = calculateAvailable(newMight, stats.speed, stats.intellect);
+    if (newAvailable >= 0) {
+      return Curry._1(onUpdate, {
+                  might: newMight,
+                  speed: stats.speed,
+                  intellect: stats.intellect
+                });
+    }
+    
   };
   var onSpeedChange = function (e) {
-    var value = e.target.value;
-    return Curry._1(dispatch, {
-                TAG: /* UpdateSpeed */1,
-                _0: Caml_format.caml_int_of_string(value)
-              });
+    var newSpeed = Caml_format.caml_int_of_string(e.target.value);
+    var newAvailable = calculateAvailable(stats.might, newSpeed, stats.intellect);
+    if (newAvailable >= 0) {
+      return Curry._1(onUpdate, {
+                  might: stats.might,
+                  speed: newSpeed,
+                  intellect: stats.intellect
+                });
+    }
+    
   };
   var onIntellectChange = function (e) {
-    var value = e.target.value;
-    return Curry._1(dispatch, {
-                TAG: /* UpdateIntellect */2,
-                _0: Caml_format.caml_int_of_string(value)
-              });
+    var newIntellect = Caml_format.caml_int_of_string(e.target.value);
+    var newAvailable = calculateAvailable(stats.might, stats.speed, newIntellect);
+    if (newAvailable >= 0) {
+      return Curry._1(onUpdate, {
+                  might: stats.might,
+                  speed: stats.speed,
+                  intellect: newIntellect
+                });
+    }
+    
   };
-  return React.createElement(React.Fragment, undefined, React.createElement("h2", undefined, "Extra Stats"), React.createElement("p", undefined, "Points available: " + String(state.available)), React.createElement("p", undefined, React.createElement("label", undefined, "Might: ", React.createElement("input", {
+  return React.createElement(React.Fragment, undefined, React.createElement("h2", undefined, "Extra Stats"), React.createElement("p", undefined, "Points available: " + String(available)), React.createElement("p", undefined, React.createElement("label", undefined, "Might: ", React.createElement("input", {
                           max: "6",
                           min: "0",
                           type: "number",
-                          value: String(state.might),
+                          value: String(stats.might),
                           onChange: onMightChange
                         }))), React.createElement("p", undefined, React.createElement("label", undefined, "Speed: ", React.createElement("input", {
                           max: "6",
                           min: "0",
                           type: "number",
-                          value: String(state.speed),
+                          value: String(stats.speed),
                           onChange: onSpeedChange
                         }))), React.createElement("p", undefined, React.createElement("label", undefined, "Intellect: ", React.createElement("input", {
                           max: "6",
                           min: "0",
                           type: "number",
-                          value: String(state.intellect),
+                          value: String(stats.intellect),
                           onChange: onIntellectChange
                         }))));
 }
 
+var maxAvailable = 6;
+
 var make = CharacterStatsSelector;
 
-exports.initialState = initialState;
+exports.maxAvailable = maxAvailable;
+exports.calculateAvailable = calculateAvailable;
 exports.make = make;
 /* react Not a pure module */

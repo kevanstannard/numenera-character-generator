@@ -2,6 +2,36 @@
 
 var Belt_List = require("bs-platform/lib/js/belt_List.js");
 
+function descriptorTypeToString(descriptorType) {
+  switch (descriptorType) {
+    case /* Charming */0 :
+        return "Charming";
+    case /* Clever */1 :
+        return "Clever";
+    case /* Graceful */2 :
+        return "Graceful";
+    case /* Intelligent */3 :
+        return "Intelligent";
+    case /* Learned */4 :
+        return "Learned";
+    case /* MysticalMechanical */5 :
+        return "Mystical/Mechanical";
+    case /* Rugged */6 :
+        return "Rugged";
+    case /* Stealthy */7 :
+        return "Stealthy";
+    case /* Strong */8 :
+        return "Strong";
+    case /* StrongWilled */9 :
+        return "Strong willed";
+    case /* Swift */10 :
+        return "Swift";
+    case /* Tough */11 :
+        return "Tough";
+    
+  }
+}
+
 var descriptorTypes = {
   hd: /* Charming */0,
   tl: {
@@ -100,7 +130,7 @@ function getDescriptorInfo(descriptorType) {
         return {
                 descriptorType: /* StrongWilled */9,
                 id: "StrongWilled",
-                name: "Strong Willed"
+                name: "Strong willed"
               };
     case /* Swift */10 :
         return {
@@ -132,6 +162,7 @@ function stringToDescriptorType(id) {
               }));
 }
 
+exports.descriptorTypeToString = descriptorTypeToString;
 exports.descriptorTypes = descriptorTypes;
 exports.getDescriptorInfo = getDescriptorInfo;
 exports.descriptorInfos = descriptorInfos;

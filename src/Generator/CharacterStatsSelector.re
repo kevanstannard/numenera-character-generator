@@ -1,5 +1,3 @@
-// open Numenera;
-
 type state = {
   available: int,
   might: int,
@@ -7,62 +5,62 @@ type state = {
   intellect: int,
 };
 
-let initialState = () => {available: 6, might: 0, speed: 0, intellect: 0};
+let maxAvailable = 6;
 
-type action =
-  | UpdateMight(int)
-  | UpdateSpeed(int)
-  | UpdateIntellect(int);
+let calculateAvailable = (might, speed, intellect) =>
+  maxAvailable - might - speed - intellect;
 
 [@react.component]
-let make = () => {
-  let (state, dispatch) =
-    React.useReducer(
-      (state, action) =>
-        switch (action) {
-        | UpdateMight(newMight) =>
-          let total = newMight + state.speed + state.intellect;
-          let newState =
-            total <= 6
-              ? {...state, available: 6 - total, might: newMight} : state;
-          newState;
-        | UpdateSpeed(newSpeed) =>
-          let total = state.might + newSpeed + state.intellect;
-          let newState =
-            total <= 6
-              ? {...state, available: 6 - total, speed: newSpeed} : state;
-          newState;
-        | UpdateIntellect(newIntellect) =>
-          let total = state.might + state.speed + newIntellect;
-          let newState =
-            total <= 6
-              ? {...state, available: 6 - total, intellect: newIntellect}
-              : state;
-          newState;
-        },
-      initialState(),
-    );
+let make =
+    (
+      ~stats: Character.characterInfoStat,
+      ~onUpdate: Character.characterInfoStat => unit,
+    ) => {
+  let available =
+    calculateAvailable(stats.might, stats.speed, stats.intellect);
 
   let onMightChange = (e: ReactEvent.Form.t): unit => {
-    let value: string = e->ReactEvent.Form.target##value;
-    dispatch(UpdateMight(int_of_string(value)));
+    let newMight: int = int_of_string(e->ReactEvent.Form.target##value);
+    let newAvailable =
+      calculateAvailable(newMight, stats.speed, stats.intellect);
+    if (newAvailable >= 0) {
+      onUpdate({
+        might: newMight,
+        speed: stats.speed,
+        intellect: stats.intellect,
+      });
+    };
   };
 
   let onSpeedChange = (e: ReactEvent.Form.t): unit => {
-    let value: string = e->ReactEvent.Form.target##value;
-    dispatch(UpdateSpeed(int_of_string(value)));
+    let newSpeed: int = int_of_string(e->ReactEvent.Form.target##value);
+    let newAvailable =
+      calculateAvailable(stats.might, newSpeed, stats.intellect);
+    if (newAvailable >= 0) {
+      onUpdate({
+        might: stats.might,
+        speed: newSpeed,
+        intellect: stats.intellect,
+      });
+    };
   };
 
   let onIntellectChange = (e: ReactEvent.Form.t): unit => {
-    let value: string = e->ReactEvent.Form.target##value;
-    dispatch(UpdateIntellect(int_of_string(value)));
+    let newIntellect: int = int_of_string(e->ReactEvent.Form.target##value);
+    let newAvailable =
+      calculateAvailable(stats.might, stats.speed, newIntellect);
+    if (newAvailable >= 0) {
+      onUpdate({
+        might: stats.might,
+        speed: stats.speed,
+        intellect: newIntellect,
+      });
+    };
   };
 
   <>
     <h2> {React.string("Extra Stats")} </h2>
-    <p>
-      {React.string("Points available: " ++ string_of_int(state.available))}
-    </p>
+    <p> {React.string("Points available: " ++ string_of_int(available))} </p>
     <p>
       <label>
         {React.string("Might: ")}
@@ -70,7 +68,7 @@ let make = () => {
           type_="number"
           min="0"
           max="6"
-          value={string_of_int(state.might)}
+          value={string_of_int(stats.might)}
           onChange=onMightChange
         />
       </label>
@@ -82,7 +80,7 @@ let make = () => {
           type_="number"
           min="0"
           max="6"
-          value={string_of_int(state.speed)}
+          value={string_of_int(stats.speed)}
           onChange=onSpeedChange
         />
       </label>
@@ -94,7 +92,7 @@ let make = () => {
           type_="number"
           min="0"
           max="6"
-          value={string_of_int(state.intellect)}
+          value={string_of_int(stats.intellect)}
           onChange=onIntellectChange
         />
       </label>
