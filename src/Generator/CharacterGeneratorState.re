@@ -13,6 +13,7 @@ type t = {
   esoteries: list(esotery),
   tricks: list(trick),
   extraStats: characterInfoStat,
+  extraEdges: characterInfoEdge,
 };
 
 let defaultState = (): t => {
@@ -23,6 +24,11 @@ let defaultState = (): t => {
   esoteries: [],
   tricks: [],
   extraStats: {
+    might: 0,
+    speed: 0,
+    intellect: 0,
+  },
+  extraEdges: {
     might: 0,
     speed: 0,
     intellect: 0,

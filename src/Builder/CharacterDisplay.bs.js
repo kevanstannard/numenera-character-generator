@@ -77,7 +77,7 @@ function CharacterDisplay(Props) {
   var mightEdgeDisplay = edgeValueToDisplay(character.mightEdge);
   var speedEdgeDisplay = edgeValueToDisplay(character.speedEdge);
   var intellectEdgeDisplay = edgeValueToDisplay(character.intellectEdge);
-  var content = "CHARACTER TYPE\n" + (characterTypeToDisplay(character.characterType) + "\n\nEFFORT\n" + (String(character.effort) + "\n\nMIGHT\n" + (mightDisplay.total + "\n\n" + (lines(mightDisplay.reasons) + ("\nMIGHT EDGE\n" + (mightEdgeDisplay.total + "\n\nSPEED\n" + (speedDisplay.total + "\n\n" + (lines(speedDisplay.reasons) + ("\nSPEED EDGE\n" + (speedEdgeDisplay.total + "\n\nINTELLECT\n" + (intellectDisplay.total + "\n\n" + (lines(intellectDisplay.reasons) + ("\nINTELLECT EDGE\n" + (intellectEdgeDisplay.total + "\n\n"))))))))))))));
+  var content = "CHARACTER TYPE\n" + (characterTypeToDisplay(character.characterType) + "\n\nEFFORT\n" + (String(character.effort) + "\n\nMIGHT\n" + ("Pool: " + mightDisplay.total + "\n" + ("Edge: " + mightEdgeDisplay.total + "\n\nSPEED\n" + ("Pool: " + speedDisplay.total + "\n" + ("Edge: " + speedEdgeDisplay.total + "\n\nINTELLECT\n" + ("Pool: " + intellectDisplay.total + "\n" + ("Edge: " + intellectEdgeDisplay.total + "\n\n"))))))));
   return React.createElement("pre", undefined, content);
 }
 

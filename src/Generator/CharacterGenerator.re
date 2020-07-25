@@ -10,6 +10,7 @@ type actions =
   | SetCharacterDescriptor(option(descriptorType))
   | SetCharacterFocus(option(focusType))
   | SetExtraStats(characterInfoStat)
+  | SetExtraEdges(characterInfoEdge)
   | SetWeapons(list(weaponType))
   | SetEsoteries(list(esotery))
   | SetTricks(list(trick));
@@ -91,6 +92,7 @@ let make = () => {
           }
         | SetCharacterFocus(characterFocus) => {...state, characterFocus}
         | SetExtraStats(extraStats) => {...state, extraStats}
+        | SetExtraEdges(extraEdges) => {...state, extraEdges}
         | SetWeapons(weapons) => {...state, weapons}
         | SetEsoteries(esoteries) => {...state, esoteries}
         | SetTricks(tricks) => {...state, tricks}
@@ -144,7 +146,13 @@ let make = () => {
                 }}
               />
             | CollectCharacterEdge =>
-              <CharacterEdgeSelector key="CharacterEdgeSelector" />
+              <CharacterEdgeSelector
+                key="CharacterEdgeSelector"
+                edges={state.extraEdges}
+                onUpdate={extraEdges => {
+                  dispatch(SetExtraEdges(extraEdges))
+                }}
+              />
             | CollectWeapons =>
               let characterInfo =
                 switch (state.characterType) {

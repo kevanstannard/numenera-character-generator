@@ -134,11 +134,22 @@ let addBaseEdges = (character: character, state: CharacterGeneratorState.t) => {
   };
 };
 
+let addExtraEdges = (character: character, state: CharacterGeneratorState.t) => {
+  let reason = "Extra";
+  let {might, speed, intellect}: Character.characterInfoEdge =
+    state.extraEdges;
+  character
+  ->addMightEdge(might, reason)
+  ->addSpeedEdge(speed, reason)
+  ->addIntellectEdge(intellect, reason);
+};
+
 let build = (state: CharacterGeneratorState.t): character => {
   initialCharacter()
   ->setCharacterType(state)
   ->addEffort(1)
   ->addBaseStats(state)
   ->addExtraStats(state)
-  ->addBaseEdges(state);
+  ->addBaseEdges(state)
+  ->addExtraEdges(state);
 };

@@ -194,17 +194,23 @@ function addBaseEdges(character, state) {
   return addIntellectEdge(addSpeedEdge(addMightEdge(character, match.might, reason), match.speed, reason), match.intellect, reason);
 }
 
+function addExtraEdges(character, state) {
+  var reason = "Extra";
+  var match = state.extraEdges;
+  return addIntellectEdge(addSpeedEdge(addMightEdge(character, match.might, reason), match.speed, reason), match.intellect, reason);
+}
+
 function build(state) {
-  return addBaseEdges(addExtraStats(addBaseStats(addEffort(setCharacterType({
-                              characterType: undefined,
-                              effort: 0,
-                              might: /* [] */0,
-                              speed: /* [] */0,
-                              intellect: /* [] */0,
-                              mightEdge: /* [] */0,
-                              speedEdge: /* [] */0,
-                              intellectEdge: /* [] */0
-                            }, state), 1), state), state), state);
+  return addExtraEdges(addBaseEdges(addExtraStats(addBaseStats(addEffort(setCharacterType({
+                                  characterType: undefined,
+                                  effort: 0,
+                                  might: /* [] */0,
+                                  speed: /* [] */0,
+                                  intellect: /* [] */0,
+                                  mightEdge: /* [] */0,
+                                  speedEdge: /* [] */0,
+                                  intellectEdge: /* [] */0
+                                }, state), 1), state), state), state), state);
 }
 
 exports.initialCharacter = initialCharacter;
@@ -219,5 +225,6 @@ exports.addMightEdge = addMightEdge;
 exports.addSpeedEdge = addSpeedEdge;
 exports.addIntellectEdge = addIntellectEdge;
 exports.addBaseEdges = addBaseEdges;
+exports.addExtraEdges = addExtraEdges;
 exports.build = build;
 /* Character-NumeneraCharacterGenerator Not a pure module */

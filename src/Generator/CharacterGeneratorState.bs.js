@@ -13,6 +13,11 @@ function defaultState(param) {
             might: 0,
             speed: 0,
             intellect: 0
+          },
+          extraEdges: {
+            might: 0,
+            speed: 0,
+            intellect: 0
           }
         };
 }
